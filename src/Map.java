@@ -2,7 +2,7 @@
  * Class wich create a map. A map is a grid with a width and a height. On this
  * grid there are some objects (walls, boxes, character, ... ).
  * 
- * @author leprunih
+ * @author hugo, virgil
  *
  */
 public class Map {
@@ -11,12 +11,17 @@ public class Map {
 	 * map's width (fixed).
 	 */
 	private final static int FIXED_COLUMN = 64;
+	
 	/**
 	 * map's height (fixed).
 	 */
 	private final static int FIXED_LINES = 64;
 
+	/**
+	 * map's grid (can containt square)
+	 */
 	private Square[][] grid;
+	
 	/**
 	 * builder wich make a new map WIDTH by HEIGHT.
 	 */
@@ -25,7 +30,10 @@ public class Map {
 		this.build();
 		this.fill();
 	}
-
+	
+	/**
+	 * build a new grid as a map.
+	 */
 	private void build()
 	{
 		this.grid = new Square[FIXED_COLUMN][FIXED_LINES];
@@ -35,7 +43,9 @@ public class Map {
 	
 		
 	}
-
+	/**
+	 * fill the grid with objects
+	 */
 	private void fill()
 	{
 
