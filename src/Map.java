@@ -1,3 +1,4 @@
+// TODO fix comment: this class creates nothing, tell what it represents
 /**
  * Class wich create a map. A map is a grid with a width and a height. On this
  * grid there are some objects (walls, boxes, character, ... ).
@@ -7,23 +8,26 @@
  */
 public class Map {
 
+	// TODO rename constant (NUMBER_OF_COLUMNS)
 	/**
 	 * map's width (fixed).
 	 */
 	private final static int FIXED_COLUMN = 64;
 	
+	// TODO rename constant (NUMBER_OF_LINES)
 	/**
 	 * map's height (fixed).
 	 */
 	private final static int FIXED_LINES = 64;
 
 	/**
-	 * map's grid (can containt square)
+	 * map's grid (can contain squares)
 	 */
 	private Square[][] grid;
 	
+	// TODO fix comment : write a more accurate comment that describe what the returned map looks like
 	/**
-	 * builder wich make a new map WIDTH by HEIGHT.
+	 * constructor which makes a new map WIDTH by HEIGHT.
 	 */
 	public Map()
 	{
@@ -31,6 +35,7 @@ public class Map {
 		this.fill();
 	}
 	
+	// TODO fix comment: write a more detail comment (this one is not really understandable)
 	/**
 	 * build a new grid as a map.
 	 */
@@ -43,6 +48,7 @@ public class Map {
 	
 		
 	}
+	
 	/**
 	 * fill the grid with objects
 	 */
