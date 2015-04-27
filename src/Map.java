@@ -24,9 +24,9 @@ public class Map {
 	private final static int NUMBER_OF_LINES = 64;
 
 	/**
-	 * map's grid (can contain squares)
+	 * map's grid (can contain objects (square types ))
 	 */
-	private Square[][] grid;
+	private SquareType[][] grid;
 	
 	// TODO (done) fix comment : write a more accurate comment that describe what the returned map looks like
 
@@ -45,10 +45,10 @@ public class Map {
 	 */
 	private void build()
 	{
-		this.grid = new Square[NUMBER_OF_COLUMNS][NUMBER_OF_LINES];
+		this.grid = new SquareType[NUMBER_OF_COLUMNS][NUMBER_OF_LINES];
 		for (int columnNumber = 0; columnNumber < NUMBER_OF_COLUMNS; columnNumber++)
 			for (int lineNumber = 0; lineNumber < NUMBER_OF_LINES; lineNumber++)
-				this.grid[columnNumber][lineNumber]= new Square();
+				this.grid[columnNumber][lineNumber]= SquareType.VOID;
 	
 		
 	}
@@ -58,6 +58,6 @@ public class Map {
 	 */
 	private void fill()
 	{
-
+		
 	}
 }
