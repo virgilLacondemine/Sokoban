@@ -1,22 +1,16 @@
-// TODO (done) fix comment: this class creates nothing, tell what it represents
 
 /**
- * Class wich return a map. A map is a grid with a width and a height. On this
- * grid there are some objects (walls, boxes, character, ... ).
+ * Class representing a Sokoban game map. A map is a 2D grid where are placed some objects (walls, boxes, character, ... ).
  * 
  * @author hugo, virgil
  *
  */
 public class Map {
 
-	// TODO (done) rename constant (NUMBER_OF_COLUMNS)
-
 	/**
 	 * map's width (fixed).
 	 */
 	private final static int NUMBER_OF_COLUMNS = 64;
-	
-	// TODO (done) rename constant (NUMBER_OF_LINES)
 
 	/**
 	 * map's height (fixed).
@@ -28,8 +22,7 @@ public class Map {
 	 */
 	private SquareType[][] grid;
 	
-	// TODO (done) fix comment : write a more accurate comment that describe what the returned map looks like
-
+	// TODO (felt? you mean filled?)
 	/**
 	 * constructor which makes a new map COLUMNS by LINES felt with squares.
 	 */
@@ -39,7 +32,7 @@ public class Map {
 		this.fill();
 	}
 	
-	// TODO (done) fix comment: write a more detail comment (this one is not really understandable)
+	// TODO rename this method (confusing)
 	/**
 	 * fill the grid with void squares.
 	 */
@@ -53,6 +46,7 @@ public class Map {
 		
 	}
 	
+	// TODO rename this method (confusing)
 	/**
 	 * replace some void squares by other type of squares
 	 */

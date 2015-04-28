@@ -1,7 +1,5 @@
 
-// TODO (done) (have a glance at the fixed comment)
-// TODO (done) remove Chuck Norris as contributor. Chuck Norris does not write Java code, Chuck Norris has been coded in Java
-
+// TODO move classe in a package (fr.iutvalence.info.m2103.project.sokoban for example) 
 /**
  * Launcher for a Sokoban game
  * 
@@ -10,13 +8,10 @@
  *
  */
 public class Main {
-
-	// TODO (done) write comment
-
 	/**
-	 * Create a new Sokoban game
+	 * Create a new Sokoban game and play it
 	 * 
-	 * @param args
+	 * @param args command-line arguments (unused)
 	 */
 	public static void main(String[] args) {
 		
