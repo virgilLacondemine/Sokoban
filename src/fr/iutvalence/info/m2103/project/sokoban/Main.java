@@ -18,6 +18,8 @@ public class Main {
 		
 		new SokobanGame().play();
 		
+		
+		
 	}
 
 }

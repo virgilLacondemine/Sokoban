@@ -18,6 +18,7 @@ public class SokobanGame {
 	
 	public void play() {
 		Map map = new Map();
+		System.out.println(map.toString());
 		
 	}
 
