@@ -1,3 +1,4 @@
+package fr.iutvalence.info.m2103.project.sokoban;
 
 /**
  * Class representing a Sokoban game map. A map is a 2D grid where are placed some objects (walls, boxes, character, ... ).
@@ -22,21 +23,21 @@ public class Map {
 	 */
 	private SquareType[][] grid;
 	
-	// TODO (felt? you mean filled?)
+	// TODO (done) (felt? you mean filled?)
 	/**
-	 * constructor which makes a new map COLUMNS by LINES felt with squares.
+	 * constructor which makes a new map COLUMNS by LINES filled with squares.
 	 */
 	public Map()
 	{
-		this.build();
-		this.fill();
+		this.setMap();
+		this.fillMap();
 	}
 	
-	// TODO rename this method (confusing)
+	// TODO (done)rename this method (confusing)
 	/**
 	 * fill the grid with void squares.
 	 */
-	private void build()
+	private void setMap()
 	{
 		this.grid = new SquareType[NUMBER_OF_COLUMNS][NUMBER_OF_LINES];
 		for (int columnNumber = 0; columnNumber < NUMBER_OF_COLUMNS; columnNumber++)
@@ -46,11 +47,11 @@ public class Map {
 		
 	}
 	
-	// TODO rename this method (confusing)
+	// TODO (done) rename this method (confusing)
 	/**
 	 * replace some void squares by other type of squares
 	 */
-	private void fill()
+	private void fillMap()
 	{
 		
 	}

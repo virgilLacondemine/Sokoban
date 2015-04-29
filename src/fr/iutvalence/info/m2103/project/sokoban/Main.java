@@ -1,5 +1,6 @@
+package fr.iutvalence.info.m2103.project.sokoban;
 
-// TODO move classe in a package (fr.iutvalence.info.m2103.project.sokoban for example) 
+// TODO (done) move classe in a package (fr.iutvalence.info.m2103.project.sokoban for example) 
 /**
  * Launcher for a Sokoban game
  * 
