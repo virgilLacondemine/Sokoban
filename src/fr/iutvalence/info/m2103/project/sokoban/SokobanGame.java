@@ -1,7 +1,7 @@
 package fr.iutvalence.info.m2103.project.sokoban;
-// TODO (done) fix comment: this class build nothing (tell what is represents) 
+ 
 /**
- * launch a new Sokoban game
+ * A Sokoban game
  * Rules : http://en.wikipedia.org/wiki/Sokoban
  * @author hugo, virgil
  *
@@ -9,17 +9,63 @@ package fr.iutvalence.info.m2103.project.sokoban;
 public class SokobanGame {
 	
 	// TODO (READ) (think about it) this class has no field and no constructor, it sounds quite weird
+
+	private Map map;
+
 	
+
 	// TODO (done) write a more accurate comment
 	// TODO (done) this method is not supposed to build anything but to start the game (consider re-reading the very first TODO of this class)
+	
+	
+	public SokobanGame(){
+		this.map = new Map();
+	
+		this.play();
+		
+	}	
+	
 	/**
 	 * start a Sokoban game : build a map, set character, boxes, reach point,..
 	 */
-	
-	public void play() {
-		Map map = new Map();
-		System.out.println(map.toString());
+	public boolean play() {
+		
+		while (true)
+		{
+			// test if game is won or lost
+			if (this.gameIsWon()) return true;
+			if (this.gameIsLost()) return false;
+			// ask user for a move
+			Move move = new Move(new Position(0,0), Direction.UP);
+			// process the move
+			this.processMove(move);
+			// ...
+			// display map
+			System.out.println(map.toString());
+		}
+		
+		}
+
+
+	private void processMove(Move move) {
+		
+		
+			
 		
 	}
 
+
+	private boolean gameIsLost() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	private boolean gameIsWon() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+	
 }

@@ -53,7 +53,7 @@ public class Map {
 	/**
 	 * map's grid (can contain objects (square types ))
 	 */
-	private SquareType[][] grid;
+	public SquareType[][] grid;
 	
 
 

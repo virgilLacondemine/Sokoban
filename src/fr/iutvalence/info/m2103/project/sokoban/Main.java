@@ -1,6 +1,5 @@
 package fr.iutvalence.info.m2103.project.sokoban;
 
-// TODO (done) move classe in a package (fr.iutvalence.info.m2103.project.sokoban for example) 
 /**
  * Launcher for a Sokoban game
  * 
@@ -16,7 +15,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		new SokobanGame().play();
+		new SokobanGame();
 		
 		
 		
