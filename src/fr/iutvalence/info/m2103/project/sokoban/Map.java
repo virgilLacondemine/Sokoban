@@ -49,11 +49,18 @@ public class Map {
 	 * Reach point's line position.
 	 */
 	private final static int RP_Y = 1;
-
+	
+	
 	/**
 	 * map's grid (can contain objects (square types ))
 	 */
-	public SquareType[][] grid;
+	private SquareType[][] grid;
+	
+	private Position char_pos;
+	
+	private Position box_pos;
+	
+	private Position reachPoint_pos;
 	
 
 
@@ -64,6 +71,9 @@ public class Map {
 	public Map() {
 		this.createBlankMap();
 		this.fillMap();
+		this.reachPoint_pos = new Position(this.RP_X,this.RP_Y);
+		this.box_pos = new Position(this.BOX_X,this.BOX_Y);
+		this.char_pos = new Position(this.CHAR_X,this.CHAR_Y);
 	}
 
 	// TODO (done)rename this method (confusing)
@@ -92,10 +102,18 @@ public class Map {
 		for (int lineNumber = 0; lineNumber < NUMBER_OF_LINES; lineNumber++)
 			this.grid[11][lineNumber] = SquareType.WALL;
 
-		this.grid[CHAR_X][CHAR_Y] = SquareType.CHARACTER;
-		this.grid[BOX_X][BOX_Y] = SquareType.BOX;
-		this.grid[RP_X][RP_Y] = SquareType.REACHPOINT;
-
+	}
+	
+	public Position getCharPos(){
+		return this.char_pos;
+	}
+	
+	public Position getBoxPos(){
+		return this.box_pos;
+	}
+	
+	public Position getRPpos(){
+		return this.reachPoint_pos;
 	}
 	
 	
@@ -106,12 +124,27 @@ public class Map {
 		{
 			newMap = newMap+"\n";
 			for (int columnNumber = 0; columnNumber < NUMBER_OF_COLUMNS; columnNumber++)
+			{
+				Position temp_pos = new Position(columnNumber,lineNumber);
+				if (temp_pos.equals(char_pos))
+				{
+					newMap = newMap+"O";
+				}
+				else if (temp_pos.equals(box_pos))
+				{
+					newMap = newMap+"#";
+				}
+				else if (temp_pos.equals(reachPoint_pos))
+				{
+					newMap = newMap+"+";
+				}
+				else{
 				switch (this.grid[columnNumber][lineNumber])
 				{
 					case WALL:
 						newMap = newMap+"X";
 						break;
-					case BOX:
+					/* case BOX:
 						newMap = newMap+"#";
 						break;
 					case CHARACTER:
@@ -119,10 +152,12 @@ public class Map {
 						break;
 					case REACHPOINT:
 						newMap = newMap+"+";
-						break;
+						break; */
 					case VOID: 
 						newMap = newMap+" ";
 				}
+				}
+			}
 		}
 		
 		return newMap;

@@ -9,13 +9,13 @@ package fr.iutvalence.info.m2103.project.sokoban;
  */
 public class Move {
 
-	private final Position position;
+	private Position position;
 
 	private Direction direction;
 
-	public Move(Position position, Direction direction) {
+	public Move(Direction direction) {
 		super();
-		this.position = position;
+		
 		this.direction = direction;
 	}
 
@@ -27,14 +27,11 @@ public class Move {
 		this.direction = direction;
 	}
 
-	public Position getPosition() {
-		return position;
-	}
-
 	@Override
 	public String toString() {
-		return "Move [position=" + position + ", direction=" + direction + "]";
+		return "Move [direction=" + direction + "]";
 	}
+	
 
 	
 }

@@ -20,7 +20,7 @@ public class SokobanGame {
 	
 	public SokobanGame(){
 		this.map = new Map();
-	
+		
 		this.play();
 		
 	}	
@@ -36,7 +36,7 @@ public class SokobanGame {
 			if (this.gameIsWon()) return true;
 			if (this.gameIsLost()) return false;
 			// ask user for a move
-			Move move = new Move(new Position(0,0), Direction.UP);
+			Move move = new Move(Direction.UP);
 			// process the move
 			this.processMove(move);
 			// ...
@@ -48,10 +48,25 @@ public class SokobanGame {
 
 
 	private void processMove(Move move) {
+		switch(move.getDirection()){
 		
-		
+		case UP:
 			
+			break;
 		
+		case DOWN:
+			
+			break;
+			
+		case LEFT:
+			
+			break;
+			
+		case RIGHT:
+			
+			break;
+		
+		}
 	}
 
 
