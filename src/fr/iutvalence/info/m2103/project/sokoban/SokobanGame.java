@@ -12,8 +12,7 @@ public class SokobanGame {
 
 	private Map map;
 	
-	private Display display;
-
+	private Map copyOfMap;
 	
 
 	// TODO (done) write a more accurate comment
@@ -22,7 +21,6 @@ public class SokobanGame {
 	
 	public SokobanGame(){
 		this.map = new Map();
-		/*this.display = new Display(this.map);*/
 		this.play();
 		
 	}	
@@ -33,16 +31,18 @@ public class SokobanGame {
 	public boolean play() {
 		while (true)
 		{
+			// display map
+			Display.displayMap(this.getCopyOfMap().toString());
 			// test if game is won or lost
 			if (this.gameIsWon()) return true;
 			/*if (this.gameIsLost()) return false;*/
 			// ask user for a move
-			Move move = new Move(Direction.getRandomDirection());
+			Move move = new Move(Direction.getKeyboardDirection());
 			// process the move
 			this.processMove(move);
 			// ...
-			// display map
-			/*display.displayMap();*/
+			
+			
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
@@ -125,9 +125,18 @@ public class SokobanGame {
 
 	private boolean gameIsWon() {
 		if(this.map.getBoxPos().equals(this.map.getRPpos()))
+		{
+			System.out.println("You win !");
 			return true;
+		}
+			
 		return false;
 		
+	}
+	
+	public Map getCopyOfMap(){
+		this.copyOfMap = this.map;
+		return copyOfMap;
 	}
 	
 	
