@@ -108,12 +108,28 @@ public class Map {
 		return this.char_pos;
 	}
 	
+	public void setCharPos(Position pos) {
+			this.char_pos = pos;
+	}
+
 	public Position getBoxPos(){
 		return this.box_pos;
 	}
 	
+	public void setBoxPos(Position pos){
+		this.box_pos = pos;
+	}
+	
 	public Position getRPpos(){
 		return this.reachPoint_pos;
+	}
+	
+	public SquareType[][] getGrid(){
+		return this.grid;
+	}
+	
+	public SquareType getElementOfGrid(int x, int y){
+		return this.grid[x][y];
 	}
 	
 	
@@ -163,4 +179,5 @@ public class Map {
 		return newMap;
 	}
 
+	
 }
