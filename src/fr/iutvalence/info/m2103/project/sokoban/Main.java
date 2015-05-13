@@ -17,7 +17,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Player player = new KeyboardPlayer();
-		Display display = new GUIDisplay();
+		Display display = new ConsoleDisplay();
 		new SokobanGame(display, player).play();
 		
 		

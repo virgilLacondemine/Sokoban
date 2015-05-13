@@ -71,6 +71,13 @@ public class SokobanGame {
 				newPosBox = new Position(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1);
 				this.map.setBoxPos(newPosBox);
 			}
+			else if(newPosChar.equals(this.map.getBoxPos2()))
+			{
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(), this.map.getBoxPos2().getY()-1) == SquareType.WALL)
+					break;
+				newPosBox = new Position(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()-1);
+				this.map.setBoxPos2(newPosBox);
+			}
 			this.map.setCharPos(newPosChar);
 			break;
 		
@@ -84,6 +91,13 @@ public class SokobanGame {
 					break;
 				newPosBox = new Position(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()+1);
 				this.map.setBoxPos(newPosBox);
+			}
+			else if(newPosChar.equals(this.map.getBoxPos2()))
+			{
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(), this.map.getBoxPos2().getY()+1) == SquareType.WALL)
+					break;
+				newPosBox = new Position(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()+1);
+				this.map.setBoxPos2(newPosBox);
 			}
 			this.map.setCharPos(newPosChar);
 			break;
@@ -99,6 +113,13 @@ public class SokobanGame {
 				newPosBox = new Position(this.map.getBoxPos().getX()-1,this.map.getBoxPos().getY());
 				this.map.setBoxPos(newPosBox);
 			}
+			else if(newPosChar.equals(this.map.getBoxPos2()))
+			{
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()-1, this.map.getBoxPos2().getY()) == SquareType.WALL)
+					break;
+				newPosBox = new Position(this.map.getBoxPos2().getX()-1,this.map.getBoxPos2().getY());
+				this.map.setBoxPos2(newPosBox);
+			}
 			this.map.setCharPos(newPosChar);
 			break;
 			
@@ -113,6 +134,13 @@ public class SokobanGame {
 				newPosBox = new Position(this.map.getBoxPos().getX()+1,this.map.getBoxPos().getY());
 				this.map.setBoxPos(newPosBox);
 			}
+			else if(newPosChar.equals(this.map.getBoxPos2()))
+			{
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()+1, this.map.getBoxPos2().getY()) == SquareType.WALL)
+					break;
+				newPosBox = new Position(this.map.getBoxPos2().getX()+1,this.map.getBoxPos2().getY());
+				this.map.setBoxPos2(newPosBox);
+			}
 			this.map.setCharPos(newPosChar);
 			break;
 		
@@ -121,38 +149,152 @@ public class SokobanGame {
 
 
 	private boolean gameIsLost() {
+		/* Box are in top left corner*/
 		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1) == SquareType.WALL)
 		{
 			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()-1,this.map.getBoxPos().getY()) == SquareType.WALL)
 			{
-				System.out.println("You lose !");
-				return true;
+				/* Box2 are in top right corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()-1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()+1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
 				
+				/* Box2 are in bottom left corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()+1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()-1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
+				
+				/* Box2 are in bottom right corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()+1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()+1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
 			}
 				
 		}
+		
+		/* Box are in top right corner*/
 		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1) == SquareType.WALL)
 		{
 			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()+1,this.map.getBoxPos().getY()) == SquareType.WALL)
 			{
-				System.out.println("You lose !");
-				return true;
+				/* Box2 are in top left corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()-1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()-1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
+				
+				/* Box2 are in bottom left corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()+1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()-1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
+				
+				/* Box2 are in bottom right corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()+1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()+1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
 			}
 		}
+		
+		/* Box are in bottom left corner*/
 		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()+1) == SquareType.WALL)
 		{
 			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()-1,this.map.getBoxPos().getY()) == SquareType.WALL)
 			{
-				System.out.println("You lose !");
-				return true;
+				/* Box2 are in top right corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()-1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()+1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
+				
+				/* Box2 are in top left corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()-1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()-1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
+				
+				/* Box2 are in bottom right corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()+1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()+1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
 			}
 		}
+		
+		/* Box are in bottom right corner*/
 		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()+1) == SquareType.WALL)
 		{
 			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()+1,this.map.getBoxPos().getY()) == SquareType.WALL)
 			{
-				System.out.println("You lose !");
-				return true;
+				/* Box2 are in top right corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()-1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()+1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
+				
+				/* Box2 are in top left corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()-1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()-1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
+				
+				/* Box2 are in bottom left corner*/
+				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()+1) == SquareType.WALL)
+				{
+					if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()-1,this.map.getBoxPos2().getY()) == SquareType.WALL)
+					{
+						System.out.println("You lose !");
+						return true;
+					}
+				}
 			}
 		}
 		return false;
@@ -160,7 +302,12 @@ public class SokobanGame {
 
 
 	private boolean gameIsWon() {
-		if(this.map.getBoxPos().equals(this.map.getRPpos()))
+		if(this.map.getBoxPos().equals(this.map.getRPpos()) && this.map.getBoxPos2().equals(this.map.getRPpos2()))
+		{
+			System.out.println("You win !");
+			return true;
+		}
+		if(this.map.getBoxPos2().equals(this.map.getRPpos()) && this.map.getBoxPos().equals(this.map.getRPpos2()))
 		{
 			System.out.println("You win !");
 			return true;

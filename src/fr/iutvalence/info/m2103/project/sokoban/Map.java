@@ -39,7 +39,17 @@ public class Map {
 	 * Box's line position.
 	 */
 	private final static int BOX_Y = 6;
+	
+	/**
+	 * Box's column position.
+	 */
+	private final static int BOX2_X = 6;
 
+	/**
+	 * Box's line position.
+	 */
+	private final static int BOX2_Y = 5;
+	
 	/**
 	 * Reach point's column position.
 	 */
@@ -49,6 +59,16 @@ public class Map {
 	 * Reach point's line position.
 	 */
 	private final static int RP_Y = 1;
+	
+	/**
+	 * Reach point's column position.
+	 */
+	private final static int RP2_X = 10;
+
+	/**
+	 * Reach point's line position.
+	 */
+	private final static int RP2_Y = 10;
 	
 	
 	/**
@@ -60,8 +80,11 @@ public class Map {
 	
 	private Position box_pos;
 	
+	private Position box_pos2;
+	
 	private Position reachPoint_pos;
 	
+	private Position reachPoint_pos2;
 
 
 	// TODO (done) (felt? you mean filled?)
@@ -72,7 +95,9 @@ public class Map {
 		this.createBlankMap();
 		this.fillMap();
 		this.reachPoint_pos = new Position(this.RP_X,this.RP_Y);
+		this.reachPoint_pos2 = new Position(this.RP2_X, this.RP2_Y);
 		this.box_pos = new Position(this.BOX_X,this.BOX_Y);
+		this.box_pos2 = new Position(this.BOX2_X, this.BOX2_Y);
 		this.char_pos = new Position(this.CHAR_X,this.CHAR_Y);
 	}
 
@@ -120,8 +145,20 @@ public class Map {
 		this.box_pos = pos;
 	}
 	
+	public Position getBoxPos2(){
+		return this.box_pos2;
+	}
+	
+	public void setBoxPos2(Position pos){
+		this.box_pos2 = pos;
+	}
+	
 	public Position getRPpos(){
 		return this.reachPoint_pos;
+	}
+	
+	public Position getRPpos2(){
+		return this.reachPoint_pos2;
 	}
 	
 	public SquareType[][] getGrid(){
@@ -147,11 +184,11 @@ public class Map {
 				{
 					newMap = newMap+"O";
 				}
-				else if (temp_pos.equals(box_pos))
+				else if (temp_pos.equals(box_pos) || temp_pos.equals(box_pos2))
 				{
 					newMap = newMap+"#";
 				}
-				else if (temp_pos.equals(reachPoint_pos))
+				else if (temp_pos.equals(reachPoint_pos) || temp_pos.equals(reachPoint_pos2))
 				{
 					newMap = newMap+"+";
 				}
@@ -161,15 +198,6 @@ public class Map {
 					case WALL:
 						newMap = newMap+"X";
 						break;
-					/* case BOX:
-						newMap = newMap+"#";
-						break;
-					case CHARACTER:
-						newMap = newMap+"O";
-						break;
-					case REACHPOINT:
-						newMap = newMap+"+";
-						break; */
 					case VOID: 
 						newMap = newMap+" ";
 				}
