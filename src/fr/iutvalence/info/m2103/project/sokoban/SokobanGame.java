@@ -69,6 +69,8 @@ public class SokobanGame {
 				if(this.map.getElementOfGrid(this.map.getBoxPos().getX(), this.map.getBoxPos().getY()-1) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1);
+				if(newPosBox.equals(this.map.getBoxPos2()))
+					break;
 				this.map.setBoxPos(newPosBox);
 			}
 			else if(newPosChar.equals(this.map.getBoxPos2()))
@@ -76,6 +78,8 @@ public class SokobanGame {
 				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(), this.map.getBoxPos2().getY()-1) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()-1);
+				if(newPosBox.equals(this.map.getBoxPos()))
+					break;
 				this.map.setBoxPos2(newPosBox);
 			}
 			this.map.setCharPos(newPosChar);
@@ -90,6 +94,8 @@ public class SokobanGame {
 				if(this.map.getElementOfGrid(this.map.getBoxPos().getX(), this.map.getBoxPos().getY()+1) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()+1);
+				if(newPosBox.equals(this.map.getBoxPos2()))
+					break;
 				this.map.setBoxPos(newPosBox);
 			}
 			else if(newPosChar.equals(this.map.getBoxPos2()))
@@ -97,6 +103,8 @@ public class SokobanGame {
 				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(), this.map.getBoxPos2().getY()+1) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()+1);
+				if(newPosBox.equals(this.map.getBoxPos()))
+					break;
 				this.map.setBoxPos2(newPosBox);
 			}
 			this.map.setCharPos(newPosChar);
@@ -111,6 +119,8 @@ public class SokobanGame {
 				if(this.map.getElementOfGrid(this.map.getBoxPos().getX()-1, this.map.getBoxPos().getY()) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos().getX()-1,this.map.getBoxPos().getY());
+				if(newPosBox.equals(this.map.getBoxPos2()))
+					break;
 				this.map.setBoxPos(newPosBox);
 			}
 			else if(newPosChar.equals(this.map.getBoxPos2()))
@@ -118,6 +128,8 @@ public class SokobanGame {
 				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()-1, this.map.getBoxPos2().getY()) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos2().getX()-1,this.map.getBoxPos2().getY());
+				if(newPosBox.equals(this.map.getBoxPos()))
+					break;
 				this.map.setBoxPos2(newPosBox);
 			}
 			this.map.setCharPos(newPosChar);
@@ -132,6 +144,8 @@ public class SokobanGame {
 				if(this.map.getElementOfGrid(this.map.getBoxPos().getX()+1, this.map.getBoxPos().getY()) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos().getX()+1,this.map.getBoxPos().getY());
+				if(newPosBox.equals(this.map.getBoxPos2()))
+					break;
 				this.map.setBoxPos(newPosBox);
 			}
 			else if(newPosChar.equals(this.map.getBoxPos2()))
@@ -139,6 +153,8 @@ public class SokobanGame {
 				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX()+1, this.map.getBoxPos2().getY()) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos2().getX()+1,this.map.getBoxPos2().getY());
+				if(newPosBox.equals(this.map.getBoxPos()))
+					break;
 				this.map.setBoxPos2(newPosBox);
 			}
 			this.map.setCharPos(newPosChar);
