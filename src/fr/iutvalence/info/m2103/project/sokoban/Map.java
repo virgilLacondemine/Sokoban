@@ -96,11 +96,11 @@ public class Map {
 		for (int columnNumber = 0; columnNumber < NUMBER_OF_COLUMNS; columnNumber++)
 			this.grid[columnNumber][0] = SquareType.WALL;
 		for (int columnNumber = 0; columnNumber < NUMBER_OF_COLUMNS; columnNumber++)
-			this.grid[columnNumber][11] = SquareType.WALL;
+			this.grid[columnNumber][NUMBER_OF_COLUMNS-1] = SquareType.WALL;
 		for (int lineNumber = 0; lineNumber < NUMBER_OF_LINES; lineNumber++)
 			this.grid[0][lineNumber] = SquareType.WALL;
 		for (int lineNumber = 0; lineNumber < NUMBER_OF_LINES; lineNumber++)
-			this.grid[11][lineNumber] = SquareType.WALL;
+			this.grid[NUMBER_OF_LINES-1][lineNumber] = SquareType.WALL;
 
 	}
 	

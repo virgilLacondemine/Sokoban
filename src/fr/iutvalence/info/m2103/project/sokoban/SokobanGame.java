@@ -20,9 +20,9 @@ public class SokobanGame {
 	// TODO (done) this method is not supposed to build anything but to start the game (consider re-reading the very first TODO of this class)
 	
 	
-	public SokobanGame(){
-		this.display = new ConsoleDisplay();
-		this.player = new RandomPlayer();
+	public SokobanGame(Display display, Player player){
+		this.display = display;
+		this.player = player;
 		this.map = new Map();
 		
 	}	
@@ -37,7 +37,7 @@ public class SokobanGame {
 			display.displayMap(this.map.toString());
 			// test if game is won or lost
 			if (this.gameIsWon()) return true;
-			/*if (this.gameIsLost()) return false;*/
+			if(this.gameIsLost()) return true;
 			// ask user for a move
 			Move move = new Move(player.getDirection());
 			// process the move
@@ -121,6 +121,40 @@ public class SokobanGame {
 
 
 	private boolean gameIsLost() {
+		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1) == SquareType.WALL)
+		{
+			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()-1,this.map.getBoxPos().getY()) == SquareType.WALL)
+			{
+				System.out.println("You lose !");
+				return true;
+				
+			}
+				
+		}
+		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1) == SquareType.WALL)
+		{
+			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()+1,this.map.getBoxPos().getY()) == SquareType.WALL)
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+		}
+		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()+1) == SquareType.WALL)
+		{
+			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()-1,this.map.getBoxPos().getY()) == SquareType.WALL)
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+		}
+		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()+1) == SquareType.WALL)
+		{
+			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()+1,this.map.getBoxPos().getY()) == SquareType.WALL)
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+		}
 		return false;
 	}
 
