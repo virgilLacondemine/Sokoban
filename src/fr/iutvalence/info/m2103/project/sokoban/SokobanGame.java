@@ -12,16 +12,18 @@ public class SokobanGame {
 
 	private Map map;
 	
-	private Map copyOfMap;
+	private Player player;
 	
+	private Display display;
 
 	// TODO (done) write a more accurate comment
 	// TODO (done) this method is not supposed to build anything but to start the game (consider re-reading the very first TODO of this class)
 	
 	
 	public SokobanGame(){
+		this.display = new ConsoleDisplay();
+		this.player = new RandomPlayer();
 		this.map = new Map();
-		this.play();
 		
 	}	
 	
@@ -32,12 +34,12 @@ public class SokobanGame {
 		while (true)
 		{
 			// display map
-			Display.displayMap(this.getCopyOfMap().toString());
+			display.displayMap(this.map.toString());
 			// test if game is won or lost
 			if (this.gameIsWon()) return true;
 			/*if (this.gameIsLost()) return false;*/
 			// ask user for a move
-			Move move = new Move(Direction.getKeyboardDirection());
+			Move move = new Move(player.getDirection());
 			// process the move
 			this.processMove(move);
 			// ...
@@ -133,12 +135,5 @@ public class SokobanGame {
 		return false;
 		
 	}
-	
-	public Map getCopyOfMap(){
-		this.copyOfMap = this.map;
-		return copyOfMap;
-	}
-	
-	
 	
 }

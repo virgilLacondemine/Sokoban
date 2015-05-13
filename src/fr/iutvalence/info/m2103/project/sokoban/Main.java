@@ -15,7 +15,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		new SokobanGame();
+		new SokobanGame().play();
 		
 		
 		

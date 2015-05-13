@@ -1,18 +1,10 @@
 package fr.iutvalence.info.m2103.project.sokoban;
 
-import java.util.Random;
 import java.util.Scanner;
 
-public enum Direction{
+public class KeyboardPlayer implements Player{
 	
-	UP, DOWN, LEFT, RIGHT;
-
-	public static Direction getRandomDirection(){
-		Random random = new Random();
-        return values()[random.nextInt(values().length)];
-	}
-	
-	/*public static Direction getKeyboardDirection(){
+	public Direction getDirection(){
 		Scanner sc = new Scanner(System.in);
 		String str = sc.nextLine();
 		char letter = str.charAt(0);
@@ -28,6 +20,8 @@ public enum Direction{
 				return Direction.RIGHT;
 		}
 		return null;
-	}*/
+	}
 	
+	
+
 }
