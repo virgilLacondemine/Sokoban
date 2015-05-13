@@ -16,7 +16,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
-		Player player = new KeyboardPlayer();
+		Player player = new RandomPlayer();
 		Display display = new ConsoleDisplay();
 		new SokobanGame(display, player).play();
 		

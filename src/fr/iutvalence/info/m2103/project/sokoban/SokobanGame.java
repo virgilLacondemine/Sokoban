@@ -45,11 +45,11 @@ public class SokobanGame {
 			// ...
 			
 			
-			try {
+			/*try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
+			}*/
 		
 		}
 		
@@ -165,9 +165,30 @@ public class SokobanGame {
 
 
 	private boolean gameIsLost() {
-		/* Box are in top left corner*/
+		Position boxPosA;
+		Position boxPosB;
+		
+		
+		/* Box are in top left corner or top*/
 		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1) == SquareType.WALL)
 		{
+			boxPosA = new Position(this.map.getBoxPos().getX()+1, this.map.getBoxPos().getY());
+			boxPosB = new Position(this.map.getBoxPos().getX()-1, this.map.getBoxPos().getY());
+			
+			/* Box and Box2 are in top and Box2 is right to Box */
+			if(boxPosA.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
+			/* Box and Box2 are in top and Box2 is left to Box */
+			if(boxPosB.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
 			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()-1,this.map.getBoxPos().getY()) == SquareType.WALL)
 			{
 				/* Box2 are in top right corner*/
@@ -206,6 +227,24 @@ public class SokobanGame {
 		/* Box are in top right corner*/
 		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1) == SquareType.WALL)
 		{
+			
+			boxPosA = new Position(this.map.getBoxPos().getX()+1, this.map.getBoxPos().getY());
+			boxPosB = new Position(this.map.getBoxPos().getX()-1, this.map.getBoxPos().getY());
+			
+			/* Box and Box2 are in top and Box2 is right to Box */
+			if(boxPosA.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
+			/* Box and Box2 are in top and Box2 is left to Box */
+			if(boxPosB.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
 			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()+1,this.map.getBoxPos().getY()) == SquareType.WALL)
 			{
 				/* Box2 are in top left corner*/
@@ -243,6 +282,24 @@ public class SokobanGame {
 		/* Box are in bottom left corner*/
 		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()+1) == SquareType.WALL)
 		{
+			
+			boxPosA = new Position(this.map.getBoxPos().getX()+1, this.map.getBoxPos().getY());
+			boxPosB = new Position(this.map.getBoxPos().getX()-1, this.map.getBoxPos().getY());
+			
+			/* Box and Box2 are in bottom and Box2 is right to Box */
+			if(boxPosA.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
+			/* Box and Box2 are in bottom and Box2 is left to Box */
+			if(boxPosB.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
 			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()-1,this.map.getBoxPos().getY()) == SquareType.WALL)
 			{
 				/* Box2 are in top right corner*/
@@ -280,6 +337,24 @@ public class SokobanGame {
 		/* Box are in bottom right corner*/
 		if(this.map.getElementOfGrid(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()+1) == SquareType.WALL)
 		{
+			
+			boxPosA = new Position(this.map.getBoxPos().getX()+1, this.map.getBoxPos().getY());
+			boxPosB = new Position(this.map.getBoxPos().getX()-1, this.map.getBoxPos().getY());
+			
+			/* Box and Box2 are in bottom and Box2 is right to Box */
+			if(boxPosA.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
+			/* Box and Box2 are in bottom and Box2 is left to Box */
+			if(boxPosB.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
 			if(this.map.getElementOfGrid(this.map.getBoxPos().getX()+1,this.map.getBoxPos().getY()) == SquareType.WALL)
 			{
 				/* Box2 are in top right corner*/
@@ -313,6 +388,48 @@ public class SokobanGame {
 				}
 			}
 		}
+		/*Box are in left*/
+		if(this.map.getElementOfGrid(this.map.getBoxPos().getX()-1,this.map.getBoxPos().getY()) == SquareType.WALL)
+		{
+			boxPosA = new Position(this.map.getBoxPos().getX(), this.map.getBoxPos().getY()-1);
+			boxPosB = new Position(this.map.getBoxPos().getX(), this.map.getBoxPos().getY()+1);
+			
+			/* Box and Box2 are in bottom and Box2 is right to Box */
+			if(boxPosA.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
+			/* Box and Box2 are in bottom and Box2 is left to Box */
+			if(boxPosB.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+		}
+		
+		/*Box are in right*/
+		if(this.map.getElementOfGrid(this.map.getBoxPos().getX()+1,this.map.getBoxPos().getY()) == SquareType.WALL)
+		{
+			boxPosA = new Position(this.map.getBoxPos().getX(), this.map.getBoxPos().getY()-1);
+			boxPosB = new Position(this.map.getBoxPos().getX(), this.map.getBoxPos().getY()+1);
+			
+			/* Box and Box2 are in bottom and Box2 is right to Box */
+			if(boxPosA.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+			
+			/* Box and Box2 are in bottom and Box2 is left to Box */
+			if(boxPosB.equals(this.map.getBoxPos2()))
+			{
+				System.out.println("You lose !");
+				return true;
+			}
+		}
+		
 		return false;
 	}
 
