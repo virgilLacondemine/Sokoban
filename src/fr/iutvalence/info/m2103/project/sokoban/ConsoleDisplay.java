@@ -1,7 +1,7 @@
 package fr.iutvalence.info.m2103.project.sokoban;
 /**
  * Display the map in the console
- * @author hugo
+ * @author hugo, virgil
  *
  */
 public class ConsoleDisplay implements Display{

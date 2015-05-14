@@ -1,7 +1,7 @@
 package fr.iutvalence.info.m2103.project.sokoban;
 /**
  * Class wich allows to get the direction chosen by a player.
- * @author hugo
+ * @author hugo, virgil
  *
  */
 public interface Player {

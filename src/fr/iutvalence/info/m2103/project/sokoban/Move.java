@@ -6,7 +6,7 @@ import java.util.Random;
  * This class represents a move (square by square). A move is defined by a
  * position and a direction
  * 
- * @author leprunih
+ * @author hugo, virgil
  *
  */
 public class Move {
