@@ -1,5 +1,8 @@
 package fr.iutvalence.info.m2103.project.sokoban;
-
+/**
+ * This is the position for some object on the map. Build with two coordinates x and y * @author hugo, virgil
+ *
+ */
 public class Position {
 
 	private int x;
@@ -34,7 +37,9 @@ public class Position {
 	}
 	
 	
-	
+	/**
+	 * Check if two positions are equals: x1 = x2 and y1 = y2
+	 */
 	 public boolean equals(Position position) {
 	       
 	        if (position==this) {

@@ -1,5 +1,7 @@
 package fr.iutvalence.info.m2103.project.sokoban;
-
+/**
+ *  Class ask to a player to play with the keyboard.
+ */
 import java.util.Scanner;
 
 public class KeyboardPlayer implements Player{

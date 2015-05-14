@@ -15,9 +15,11 @@ public class Main {
 	 * @param args command-line arguments (unused)
 	 */
 	public static void main(String[] args) {
-		
-		Player player = new RandomPlayer();
+		/* way to play (keyboard, random, other) */
+		Player player = new KeyboardPlayer();
+		/* way to display */
 		Display display = new ConsoleDisplay();
+		/* create a sokoban game with the way to display and way to play */
 		new SokobanGame(display, player).play();
 		
 		

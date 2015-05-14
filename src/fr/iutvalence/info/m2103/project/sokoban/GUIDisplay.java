@@ -1,5 +1,7 @@
 package fr.iutvalence.info.m2103.project.sokoban;
-
+/**
+ * display the map in GUI
+ */
 import java.awt.Color;
 
 import javax.swing.*;

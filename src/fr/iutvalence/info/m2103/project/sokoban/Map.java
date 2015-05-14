@@ -87,7 +87,7 @@ public class Map {
 	private Position reachPoint_pos2;
 
 
-	// TODO (done) (felt? you mean filled?)
+	
 	/**
 	 * constructor which makes a new map COLUMNS by LINES filled with squares.
 	 */
@@ -101,7 +101,7 @@ public class Map {
 		this.char_pos = new Position(this.CHAR_X,this.CHAR_Y);
 	}
 
-	// TODO (done)rename this method (confusing)
+	
 	/**
 	 * create a blank map (fill the grid with void squares).
 	 */
@@ -113,7 +113,7 @@ public class Map {
 
 	}
 
-	// TODO (done) rename this method (confusing)
+	
 	/**
 	 * replace some void squares by other type of squares
 	 */

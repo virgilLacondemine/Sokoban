@@ -8,16 +8,14 @@ package fr.iutvalence.info.m2103.project.sokoban;
  */
 public class SokobanGame {
 	
-	// TODO (READ) (think about it) this class has no field and no constructor, it sounds quite weird
-
+	
+	/* game's map */
 	private Map map;
-	
+	/* game's player */
 	private Player player;
-	
+	/* game's display */
 	private Display display;
 
-	// TODO (done) write a more accurate comment
-	// TODO (done) this method is not supposed to build anything but to start the game (consider re-reading the very first TODO of this class)
 	
 	
 	public SokobanGame(Display display, Player player){
@@ -55,19 +53,28 @@ public class SokobanGame {
 		
 		}
 
-
+/**
+ * Do a move of one square in one direction. Check if this move is possible and push the box if necessary
+ * 
+ */
 	private void processMove(Move move) {
 		Position newPosChar;
 		Position newPosBox;
 		switch(move.getDirection()){
+		/* if direction is up */
 		case UP:
+			
 			newPosChar = new Position(this.map.getCharPos().getX(),this.map.getCharPos().getY()-1);
+			/* check there is no wall upper */
 			if(this.map.getElementOfGrid(this.map.getCharPos().getX(), this.map.getCharPos().getY()-1) == SquareType.WALL)
 				break;
+			/* check if there is a box */
 			if(newPosChar.equals(this.map.getBoxPos()))
 			{
+				/* check the box is not in front of a wall */
 				if(this.map.getElementOfGrid(this.map.getBoxPos().getX(), this.map.getBoxPos().getY()-1) == SquareType.WALL)
 					break;
+				/* push the box */
 				newPosBox = new Position(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1);
 				if(newPosBox.equals(this.map.getBoxPos2()))
 					break;
@@ -82,6 +89,7 @@ public class SokobanGame {
 					break;
 				this.map.setBoxPos2(newPosBox);
 			}
+			/* push the character */
 			this.map.setCharPos(newPosChar);
 			break;
 		
@@ -163,7 +171,10 @@ public class SokobanGame {
 		}
 	}
 
-
+/** 
+ * Check if the box is stuck and return true if there are no way to win.
+ * 
+ */
 	private boolean gameIsLost() {
 		Position boxPosA;
 		Position boxPosB;
@@ -433,7 +444,10 @@ public class SokobanGame {
 		return false;
 	}
 
-
+/**
+ * check if the game is win: return true if the boxe is on the reach point.
+ * 
+ */
 	private boolean gameIsWon() {
 		if(this.map.getBoxPos().equals(this.map.getRPpos()) && this.map.getBoxPos2().equals(this.map.getRPpos2()))
 		{

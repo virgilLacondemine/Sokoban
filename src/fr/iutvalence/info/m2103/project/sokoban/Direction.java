@@ -1,5 +1,7 @@
 package fr.iutvalence.info.m2103.project.sokoban;
-
+/**
+ * enum of the possible direction chosen to do a move.
+ */
 import java.util.Random;
 import java.util.Scanner;
 
