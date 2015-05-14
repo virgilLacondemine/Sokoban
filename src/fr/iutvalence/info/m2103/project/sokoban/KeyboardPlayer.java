@@ -1,11 +1,17 @@
 package fr.iutvalence.info.m2103.project.sokoban;
-/**
- *  Class ask to a player to play with the keyboard.
- */
+
 import java.util.Scanner;
 
+/**
+ * Class ask to a player to play with the keyboard.
+ * @author hugo, virgil
+ *
+ */
 public class KeyboardPlayer implements Player{
 	
+	/**
+	 * get a direction from a real player
+	 */
 	public Direction getDirection(){
 		Scanner sc = new Scanner(System.in);
 		String str = sc.nextLine();

@@ -9,15 +9,25 @@ package fr.iutvalence.info.m2103.project.sokoban;
 public class SokobanGame {
 	
 	
-	/* game's map */
+	/**
+	 * game's map
+	 */
 	private Map map;
-	/* game's player */
+	/**
+	 * game's player
+	 */
 	private Player player;
-	/* game's display */
+	/**
+	 * game's display
+	 */
 	private Display display;
 
 	
-	
+	/**
+	 * build a new map and define player type and display type
+	 * @param display
+	 * @param player
+	 */
 	public SokobanGame(Display display, Player player){
 		this.display = display;
 		this.player = player;
@@ -35,7 +45,7 @@ public class SokobanGame {
 			display.displayMap(this.map.toString());
 			// test if game is won or lost
 			if (this.gameIsWon()) return true;
-			if(this.gameIsLost()) return true;
+			if(this.gameIsLost()) return false;
 			// ask user for a move
 			Move move = new Move(player.getDirection());
 			// process the move
@@ -53,10 +63,10 @@ public class SokobanGame {
 		
 		}
 
-/**
- * Do a move of one square in one direction. Check if this move is possible and push the box if necessary
- * 
- */
+	/**
+	 * Do a move of one square in one direction. Check if this move is possible and push the box if necessary
+	 * @param move
+	 */
 	private void processMove(Move move) {
 		Position newPosChar;
 		Position newPosBox;
@@ -74,47 +84,63 @@ public class SokobanGame {
 				/* check the box is not in front of a wall */
 				if(this.map.getElementOfGrid(this.map.getBoxPos().getX(), this.map.getBoxPos().getY()-1) == SquareType.WALL)
 					break;
-				/* push the box */
 				newPosBox = new Position(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()-1);
+				/* check the box is not front of a box */
 				if(newPosBox.equals(this.map.getBoxPos2()))
 					break;
+				/* push the box */
 				this.map.setBoxPos(newPosBox);
 			}
+			/* check if there is a box */
 			else if(newPosChar.equals(this.map.getBoxPos2()))
 			{
+				/* check the box is not front of a wall */
 				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(), this.map.getBoxPos2().getY()-1) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()-1);
+				/* check the box is not front of a box */
 				if(newPosBox.equals(this.map.getBoxPos()))
 					break;
+				/* push the box*/
 				this.map.setBoxPos2(newPosBox);
 			}
 			/* push the character */
 			this.map.setCharPos(newPosChar);
 			break;
-		
+			
+		/* direction is down*/
 		case DOWN:
 			newPosChar = new Position(this.map.getCharPos().getX(),this.map.getCharPos().getY()+1);
+			/* check there is no wall under */
 			if(this.map.getElementOfGrid(this.map.getCharPos().getX(), this.map.getCharPos().getY()+1) == SquareType.WALL)
 				break;
+			/* check if there is a box under character */
 			if(newPosChar.equals(this.map.getBoxPos()))
 			{
+				/* check if there is a wall under the box */
 				if(this.map.getElementOfGrid(this.map.getBoxPos().getX(), this.map.getBoxPos().getY()+1) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos().getX(),this.map.getBoxPos().getY()+1);
+				/* check if there is a box under the box */
 				if(newPosBox.equals(this.map.getBoxPos2()))
 					break;
+				/* push the box */
 				this.map.setBoxPos(newPosBox);
 			}
+			/* check if there is a box under character */
 			else if(newPosChar.equals(this.map.getBoxPos2()))
 			{
+				/* check if there is a wall under the box */
 				if(this.map.getElementOfGrid(this.map.getBoxPos2().getX(), this.map.getBoxPos2().getY()+1) == SquareType.WALL)
 					break;
 				newPosBox = new Position(this.map.getBoxPos2().getX(),this.map.getBoxPos2().getY()+1);
+				/* check if there is a box under the box */
 				if(newPosBox.equals(this.map.getBoxPos()))
 					break;
+				/* push the box */
 				this.map.setBoxPos2(newPosBox);
 			}
+			/* push the character */
 			this.map.setCharPos(newPosChar);
 			break;
 			
@@ -171,10 +197,10 @@ public class SokobanGame {
 		}
 	}
 
-/** 
- * Check if the box is stuck and return true if there are no way to win.
- * 
- */
+	/**
+	 * Check if the box is stuck and return true if there are no way to win.
+	 * @return
+	 */
 	private boolean gameIsLost() {
 		Position boxPosA;
 		Position boxPosB;
@@ -444,10 +470,10 @@ public class SokobanGame {
 		return false;
 	}
 
-/**
- * check if the game is win: return true if the boxe is on the reach point.
- * 
- */
+	/**
+	 * check if the game is win: return true if the boxes are on the reach point.
+	 * @return
+	 */
 	private boolean gameIsWon() {
 		if(this.map.getBoxPos().equals(this.map.getRPpos()) && this.map.getBoxPos2().equals(this.map.getRPpos2()))
 		{

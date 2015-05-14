@@ -7,9 +7,6 @@ package fr.iutvalence.info.m2103.project.sokoban;
 public enum SquareType {
 
 	WALL,
-	BOX,
-	CHARACTER,
-	REACHPOINT,
 	VOID;
 	
 }

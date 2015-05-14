@@ -13,7 +13,7 @@ public class Map {
 	/**
 	 * map's width (fixed).
 	 */
-	private final static int NUMBER_OF_COLUMNS = 12;
+	private static final int NUMBER_OF_COLUMNS = 12;
 
 	/**
 	 * map's height (fixed).
@@ -53,12 +53,12 @@ public class Map {
 	/**
 	 * Reach point's column position.
 	 */
-	private final static int RP_X = 10;
+	private static final int RP_X = 10;
 
 	/**
 	 * Reach point's line position.
 	 */
-	private final static int RP_Y = 1;
+	private static final int RP_Y = 1;
 	
 	/**
 	 * Reach point's column position.
@@ -76,14 +76,29 @@ public class Map {
 	 */
 	private SquareType[][] grid;
 	
+	/**
+	 * character position on the map (can evolve)
+	 */
 	private Position char_pos;
 	
+	/**
+	 * first box position on the map (can evolve)
+	 */
 	private Position box_pos;
 	
+	/**
+	 * second box position on the map (can evolve)
+	 */
 	private Position box_pos2;
 	
+	/**
+	 * first reach point position on the map
+	 */
 	private Position reachPoint_pos;
 	
+	/**
+	 * second reach point position on the map
+	 */
 	private Position reachPoint_pos2;
 
 
@@ -129,48 +144,84 @@ public class Map {
 
 	}
 	
+	/**
+	 * get the character position
+	 * @return
+	 */
 	public Position getCharPos(){
 		return this.char_pos;
 	}
 	
+	/**
+	 * set the new character position 
+	 * @param pos
+	 */
 	public void setCharPos(Position pos) {
 			this.char_pos = pos;
 	}
-
+	
+	/**
+	 * get the first box position
+	 * @return
+	 */
 	public Position getBoxPos(){
 		return this.box_pos;
 	}
 	
+	/**
+	 * set the first box position
+	 * @param pos
+	 */
 	public void setBoxPos(Position pos){
 		this.box_pos = pos;
 	}
 	
+	/**
+	 * get the second box position
+	 * @return
+	 */
 	public Position getBoxPos2(){
 		return this.box_pos2;
 	}
 	
+	/**
+	 * set the second box position
+	 * @param pos
+	 */
 	public void setBoxPos2(Position pos){
 		this.box_pos2 = pos;
 	}
 	
+	/**
+	 * get the first reach point position
+	 * @return
+	 */
 	public Position getRPpos(){
 		return this.reachPoint_pos;
 	}
 	
+	/**
+	 * get the second reach point position
+	 * @return
+	 */
 	public Position getRPpos2(){
 		return this.reachPoint_pos2;
 	}
 	
-	public SquareType[][] getGrid(){
-		return this.grid;
-	}
-	
+	/**
+	 * get the element who was on the x,y square
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public SquareType getElementOfGrid(int x, int y){
 		return this.grid[x][y];
 	}
 	
 
-	
+	/**
+	 * return the map in Ascii Art
+	 */
 	public String toString() {
 		
 		String newMap = "";

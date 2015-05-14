@@ -1,35 +1,22 @@
 package fr.iutvalence.info.m2103.project.sokoban;
+
+import java.util.Random;
+
 /**
  * enum of the possible direction chosen to do a move.
+ * @author hugo, virgil
+ *
  */
-import java.util.Random;
-import java.util.Scanner;
-
 public enum Direction{
 	
 	UP, DOWN, LEFT, RIGHT;
-
+	
+	/**
+	 * get a random direction
+	 * @return
+	 */
 	public static Direction getRandomDirection(){
 		Random random = new Random();
         return values()[random.nextInt(values().length)];
 	}
-	
-	/*public static Direction getKeyboardDirection(){
-		Scanner sc = new Scanner(System.in);
-		String str = sc.nextLine();
-		char letter = str.charAt(0);
-		switch (letter)
-		{
-			case 'z':
-				return Direction.UP;
-			case 's':
-				return Direction.DOWN;
-			case 'q':
-				return Direction.LEFT;
-			case 'd':
-				return Direction.RIGHT;
-		}
-		return null;
-	}*/
-	
 }

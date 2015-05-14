@@ -1,13 +1,20 @@
 package fr.iutvalence.info.m2103.project.sokoban;
-/**
- * display the map in GUI
- */
+
 import java.awt.Color;
 
 import javax.swing.*;
 
+/**
+ * display the application in GUI
+ * @author hugo, virgil
+ *
+ */
 public class GUIDisplay implements Display{
 
+	/**
+	 * display the application in GUI
+	 */
+	//TODO Finsih to code the GUI
 	public void displayMap(String mapAscii){
 		JFrame frame = new JFrame();
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);

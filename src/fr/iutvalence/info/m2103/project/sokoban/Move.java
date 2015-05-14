@@ -1,7 +1,5 @@
 package fr.iutvalence.info.m2103.project.sokoban;
 
-import java.util.Random;
-
 /**
  * This class represents a move (square by square). A move is defined by a
  * position and a direction
@@ -10,26 +8,35 @@ import java.util.Random;
  *
  */
 public class Move {
-
-	private Position position;
-
+	
+	/**
+	 * direction of the move
+	 */
 	private Direction direction;
-
+	
+	/**
+	 * set the move
+	 * @param direction
+	 */
 	public Move(Direction direction) {
-		super();
-		
 		this.direction = direction;
 	}
-
+	
+	/**
+	 * get the direction of the move
+	 * @return
+	 */
 	public Direction getDirection() {
 		return direction;
 	}
 
+	/**
+	 * set the direction of the move
+	 * @param direction
+	 */
 	public void setDirection(Direction direction) {
 		this.direction = direction;
 	}
-	
-	
 
 	@Override
 	public String toString() {

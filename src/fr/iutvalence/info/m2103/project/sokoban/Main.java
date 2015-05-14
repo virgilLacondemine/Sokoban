@@ -1,7 +1,5 @@
 package fr.iutvalence.info.m2103.project.sokoban;
 
-import javax.swing.JFrame;
-
 /**
  * Launcher for a Sokoban game
  * 
@@ -15,11 +13,17 @@ public class Main {
 	 * @param args command-line arguments (unused)
 	 */
 	public static void main(String[] args) {
-		/* way to play (keyboard, random, other) */
-		Player player = new KeyboardPlayer();
-		/* way to display */
+		/**
+		 * way to play (keyboard, random, other)
+		 */
+		Player player = new RandomPlayer();
+		/**
+		 * way to display
+		 */
 		Display display = new ConsoleDisplay();
-		/* create a sokoban game with the way to display and way to play */
+		/**
+		 * create a sokoban game with the way to display and way to play
+		 */
 		new SokobanGame(display, player).play();
 		
 		
