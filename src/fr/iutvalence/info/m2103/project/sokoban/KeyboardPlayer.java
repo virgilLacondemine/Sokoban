@@ -26,8 +26,9 @@ public class KeyboardPlayer implements Player{
 				return Direction.LEFT;
 			case 'd':
 				return Direction.RIGHT;
+			default:
+				return Direction.UP;
 		}
-		return null;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package fr.iutvalence.info.m2103.project.sokoban;
 
+import java.util.ArrayList;
+
 /**
  * Class representing a Sokoban game map. A map is a 2D grid where are placed
  * some objects (walls, boxes, character, ... ).
@@ -48,7 +50,7 @@ public class Map {
 	/**
 	 * Box's line position.
 	 */
-	private final static int BOX2_Y = 5;
+	private final static int BOX2_Y = 5; 
 	
 	/**
 	 * Reach point's column position.
@@ -101,7 +103,9 @@ public class Map {
 	 */
 	private Position reachPoint_pos2;
 
-
+	private ArrayList boxList;
+	
+	
 	
 	/**
 	 * constructor which makes a new map COLUMNS by LINES filled with squares.
@@ -114,6 +118,11 @@ public class Map {
 		this.box_pos = new Position(this.BOX_X,this.BOX_Y);
 		this.box_pos2 = new Position(this.BOX2_X, this.BOX2_Y);
 		this.char_pos = new Position(this.CHAR_X,this.CHAR_Y);
+		this.boxList = new ArrayList();
+		boxList.add(new Position(5,6));
+		boxList.add(new Position(6,5));
+		
+		
 	}
 
 	
@@ -231,19 +240,21 @@ public class Map {
 			for (int columnNumber = 0; columnNumber < NUMBER_OF_COLUMNS; columnNumber++)
 			{
 				Position temp_pos = new Position(columnNumber,lineNumber);
+				for(int index = 0; index < boxList.size(); index++)
+				{
+					if (temp_pos.equals(boxList.get(index)))
+						newMap = newMap+"#";
+						
+				}
 				if (temp_pos.equals(char_pos))
 				{
 					newMap = newMap+"O";
-				}
-				else if (temp_pos.equals(box_pos) || temp_pos.equals(box_pos2))
-				{
-					newMap = newMap+"#";
 				}
 				else if (temp_pos.equals(reachPoint_pos) || temp_pos.equals(reachPoint_pos2))
 				{
 					newMap = newMap+"+";
 				}
-				else{
+				else {
 				switch (this.grid[columnNumber][lineNumber])
 				{
 					case WALL:
@@ -251,6 +262,7 @@ public class Map {
 						break;
 					case VOID: 
 						newMap = newMap+" ";
+						
 				}
 				}
 			}

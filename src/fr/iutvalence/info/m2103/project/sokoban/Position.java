@@ -69,7 +69,7 @@ public class Position {
 	  * @param position
 	  * @return
 	  */
-	 public boolean equals(Position position) {
+	 public boolean equals(Object position) {
 	       
 	        if (position==this) {
 	            return true;
@@ -80,11 +80,11 @@ public class Position {
 	            Position pos = (Position) position;
 	 
 	            
-	            if (this.x != position.x) {
+	            if (this.x != pos.x) {
 	                return false; 
 	            }
 	 
-	            if (this.y != position.y) {
+	            if (this.y != pos.y) {
 	            	return false;
 	            }
 
