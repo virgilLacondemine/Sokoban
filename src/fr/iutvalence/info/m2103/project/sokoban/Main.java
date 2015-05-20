@@ -16,7 +16,7 @@ public class Main {
 		/**
 		 * way to play (keyboard, random, other)
 		 */
-		Player player = new RandomPlayer();
+		Player player = new KeyboardPlayer();
 		/**
 		 * way to display
 		 */
@@ -25,7 +25,7 @@ public class Main {
 		/**
 		 * map chosen to play
 		 */
-		Map map = new Map2();
+		Map map = new Map4();
 		
 		/**
 		 * create a sokoban game with the way to display and way to play
