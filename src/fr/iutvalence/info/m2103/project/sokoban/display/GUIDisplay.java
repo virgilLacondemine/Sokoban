@@ -1,5 +1,6 @@
-package fr.iutvalence.info.m2103.project.sokoban;
+package fr.iutvalence.info.m2103.project.sokoban.display;
 
+import fr.iutvalence.info.m2103.project.sokoban.*;
 import java.awt.Color;
 
 import javax.swing.*;

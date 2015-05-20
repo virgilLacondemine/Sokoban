@@ -1,5 +1,9 @@
 package fr.iutvalence.info.m2103.project.sokoban;
 
+import fr.iutvalence.info.m2103.project.sokoban.map.*;
+import fr.iutvalence.info.m2103.project.sokoban.display.*;
+import fr.iutvalence.info.m2103.project.sokoban.player.*;
+
 /**
  * Launcher for a Sokoban game
  * 
@@ -25,7 +29,7 @@ public class Main {
 		/**
 		 * map chosen to play
 		 */
-		Map map = new Map4();
+		Map map = new Map2();
 		
 		/**
 		 * create a sokoban game with the way to display and way to play

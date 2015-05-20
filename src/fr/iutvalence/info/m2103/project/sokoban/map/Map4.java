@@ -1,5 +1,6 @@
-package fr.iutvalence.info.m2103.project.sokoban;
+package fr.iutvalence.info.m2103.project.sokoban.map;
 
+import fr.iutvalence.info.m2103.project.sokoban.*;
 import java.util.ArrayList;
 
 /**
@@ -10,22 +11,22 @@ import java.util.ArrayList;
  *
  */
 
-public class Map2 implements Map{
+public class Map4 implements Map{
 
 	/**
 	 * map's width (fixed).
 	 */
-	private static final int NUMBER_OF_COLUMNS = 16;
+	private static final int NUMBER_OF_COLUMNS = 11;
 
 	/**
 	 * map's height (fixed).
 	 */
-	private final static int NUMBER_OF_LINES = 10;
+	private final static int NUMBER_OF_LINES = 9;
 
 	/**
 	 * Character's column position.
 	 */
-	private final static int CHAR_X = 1;
+	private final static int CHAR_X = 5;
 
 	/**
 	 * Character's line position.
@@ -55,32 +56,28 @@ public class Map2 implements Map{
 	/**
 	 * constructor which makes a new map COLUMNS by LINES filled with squares.
 	 */
-	public Map2() {
+	public Map4() {
 		this.createBlankMap();
 		this.fillMap();
 		this.char_pos = new Position(CHAR_X,CHAR_Y);
 		this.boxList = new ArrayList<Position>();
-		this.boxList.add(new Position(2,7));
-		this.boxList.add(new Position(3,7));
-		this.boxList.add(new Position(4,2));
+		this.boxList.add(new Position(5,2));
 		this.boxList.add(new Position(5,3));
-		this.boxList.add(new Position(6,6));
-		this.boxList.add(new Position(9,7));
-		this.boxList.add(new Position(9,5));
-		this.boxList.add(new Position(9,2));
-		this.boxList.add(new Position(13,7));
-		this.boxList.add(new Position(13,2));
+		this.boxList.add(new Position(3,4));
+		this.boxList.add(new Position(3,5));
+		this.boxList.add(new Position(3,6));
+		this.boxList.add(new Position(7,4));
+		this.boxList.add(new Position(7,5));
+		this.boxList.add(new Position(7,6));
 		this.reachPointList = new ArrayList<Position>();
-		this.reachPointList.add(new Position(1,3));
-		this.reachPointList.add(new Position(1,4));
-		this.reachPointList.add(new Position(1,5));
-		this.reachPointList.add(new Position(2,3));
-		this.reachPointList.add(new Position(2,4));
-		this.reachPointList.add(new Position(2,5));
-		this.reachPointList.add(new Position(13,4));
-		this.reachPointList.add(new Position(13,5));
-		this.reachPointList.add(new Position(14,4));
-		this.reachPointList.add(new Position(14,5));
+		this.reachPointList.add(new Position(5,4));
+		this.reachPointList.add(new Position(4,3));
+		this.reachPointList.add(new Position(6,3));
+		this.reachPointList.add(new Position(4,5));
+		this.reachPointList.add(new Position(4,6));
+		this.reachPointList.add(new Position(6,5));
+		this.reachPointList.add(new Position(6,6));
+		this.reachPointList.add(new Position(5,7));
 	}
 
 	/**
@@ -107,22 +104,21 @@ public class Map2 implements Map{
 		for (int lineNumber = 0; lineNumber < NUMBER_OF_LINES; lineNumber++)
 			this.grid[NUMBER_OF_COLUMNS-1][lineNumber] = SquareType.WALL;
 		for (int columnNumber = 1; columnNumber < 3; columnNumber++)
-			this.grid[columnNumber][2] = SquareType.WALL;
+			this.grid[columnNumber][6] = SquareType.WALL;
 		for (int columnNumber = 1; columnNumber < 3; columnNumber++)
+			this.grid[columnNumber][7] = SquareType.WALL;
+		for (int columnNumber = 8; columnNumber < 10; columnNumber++)
 			this.grid[columnNumber][6] = SquareType.WALL;
-		for (int columnNumber = 5; columnNumber < 9; columnNumber++)
-			this.grid[columnNumber][1] = SquareType.WALL;
-		for (int columnNumber = 11; columnNumber < 15; columnNumber++)
-			this.grid[columnNumber][3] = SquareType.WALL;
-		for (int columnNumber = 13; columnNumber < 15; columnNumber++)
-			this.grid[columnNumber][6] = SquareType.WALL;
-		for (int lineNumber = 4; lineNumber < 9; lineNumber++)
-			this.grid[5][lineNumber] = SquareType.WALL;
-		for (int lineNumber = 2; lineNumber < 6; lineNumber++)
+		for (int columnNumber = 8; columnNumber < 10; columnNumber++)
+			this.grid[columnNumber][7] = SquareType.WALL;
+		for (int columnNumber = 2; columnNumber < 5; columnNumber++)
+			this.grid[columnNumber][2] = SquareType.WALL;
+		for (int columnNumber = 6; columnNumber < 9; columnNumber++)
+			this.grid[columnNumber][2] = SquareType.WALL;
+		for (int lineNumber = 3; lineNumber < 5; lineNumber++)
+			this.grid[2][lineNumber] = SquareType.WALL;
+		for (int lineNumber = 3; lineNumber < 5; lineNumber++)
 			this.grid[8][lineNumber] = SquareType.WALL;
-		this.grid[8][8] = SquareType.WALL;
-		this.grid[11][6] = SquareType.WALL;
-		this.grid[11][1] = SquareType.WALL;
 	}
 	
 	/**
