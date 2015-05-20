@@ -28,10 +28,10 @@ public class SokobanGame {
 	 * @param display
 	 * @param player
 	 */
-	public SokobanGame(Display display, Player player){
+	public SokobanGame(Display display, Player player, Map map){
 		this.display = display;
 		this.player = player;
-		this.map = new Map();
+		this.map = map;
 		
 	}	
 	

@@ -16,15 +16,21 @@ public class Main {
 		/**
 		 * way to play (keyboard, random, other)
 		 */
-		Player player = new KeyboardPlayer();
+		Player player = new RandomPlayer();
 		/**
 		 * way to display
 		 */
 		Display display = new ConsoleDisplay();
+		
+		/**
+		 * map chosen to play
+		 */
+		Map map = new Map2();
+		
 		/**
 		 * create a sokoban game with the way to display and way to play
 		 */
-		new SokobanGame(display, player).play();
+		new SokobanGame(display, player, map).play();
 		
 		
 		
