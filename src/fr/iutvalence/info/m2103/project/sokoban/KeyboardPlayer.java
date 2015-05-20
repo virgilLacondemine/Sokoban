@@ -9,11 +9,13 @@ import java.util.Scanner;
  */
 public class KeyboardPlayer implements Player{
 	
+	private Scanner sc;
+
 	/**
 	 * get a direction from a real player
 	 */
 	public Direction getDirection(){
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		String str = sc.nextLine();
 		char letter = str.charAt(0);
 		switch (letter)
@@ -29,6 +31,7 @@ public class KeyboardPlayer implements Player{
 			default:
 				return Direction.UP;
 		}
+		
 	}
 	
 	

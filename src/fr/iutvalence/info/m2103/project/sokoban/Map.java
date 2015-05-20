@@ -25,54 +25,13 @@ public class Map {
 	/**
 	 * Character's column position.
 	 */
-	private final static int CHAR_X = 1;
+	private final static int CHAR_X = 5;
 
 	/**
 	 * Character's line position.
 	 */
-	private final static int CHAR_Y = 10;
-
-	/**
-	 * Box's column position.
-	 */
-	private final static int BOX_X = 5;
-
-	/**
-	 * Box's line position.
-	 */
-	private final static int BOX_Y = 6;
-	
-	/**
-	 * Box's column position.
-	 */
-	private final static int BOX2_X = 6;
-
-	/**
-	 * Box's line position.
-	 */
-	private final static int BOX2_Y = 5; 
-	
-	/**
-	 * Reach point's column position.
-	 */
-	private static final int RP_X = 10;
-
-	/**
-	 * Reach point's line position.
-	 */
-	private static final int RP_Y = 1;
-	
-	/**
-	 * Reach point's column position.
-	 */
-	private final static int RP2_X = 10;
-
-	/**
-	 * Reach point's line position.
-	 */
-	private final static int RP2_Y = 10;
-	
-	
+	private final static int CHAR_Y = 9;
+		
 	/**
 	 * map's grid (can contain objects (square types ))
 	 */
@@ -84,28 +43,14 @@ public class Map {
 	private Position char_pos;
 	
 	/**
-	 * first box position on the map (can evolve)
+	 * 
 	 */
-	private Position box_pos;
+	private ArrayList<Position> boxList;
 	
 	/**
-	 * second box position on the map (can evolve)
+	 * 
 	 */
-	private Position box_pos2;
-	
-	/**
-	 * first reach point position on the map
-	 */
-	private Position reachPoint_pos;
-	
-	/**
-	 * second reach point position on the map
-	 */
-	private Position reachPoint_pos2;
-
-	private ArrayList boxList;
-	
-	
+	private ArrayList<Position> reachPointList;
 	
 	/**
 	 * constructor which makes a new map COLUMNS by LINES filled with squares.
@@ -113,19 +58,21 @@ public class Map {
 	public Map() {
 		this.createBlankMap();
 		this.fillMap();
-		this.reachPoint_pos = new Position(this.RP_X,this.RP_Y);
-		this.reachPoint_pos2 = new Position(this.RP2_X, this.RP2_Y);
-		this.box_pos = new Position(this.BOX_X,this.BOX_Y);
-		this.box_pos2 = new Position(this.BOX2_X, this.BOX2_Y);
-		this.char_pos = new Position(this.CHAR_X,this.CHAR_Y);
-		this.boxList = new ArrayList();
-		boxList.add(new Position(5,6));
-		boxList.add(new Position(6,5));
-		
-		
+		this.char_pos = new Position(CHAR_X,CHAR_Y);
+		this.boxList = new ArrayList<Position>();
+		this.boxList.add(new Position(5,6));
+		this.boxList.add(new Position(6,5));
+		this.boxList.add(new Position(7,5));
+		this.boxList.add(new Position(9,2));
+		this.boxList.add(new Position(7,4));
+		this.reachPointList = new ArrayList<Position>();
+		this.reachPointList.add(new Position(10,1));
+		this.reachPointList.add(new Position(10,10));
+		this.reachPointList.add(new Position(1,1));
+		this.reachPointList.add(new Position(1,10));
+		this.reachPointList.add(new Position(1,2));
 	}
 
-	
 	/**
 	 * create a blank map (fill the grid with void squares).
 	 */
@@ -137,7 +84,6 @@ public class Map {
 
 	}
 
-	
 	/**
 	 * replace some void squares by other type of squares
 	 */
@@ -150,7 +96,6 @@ public class Map {
 			this.grid[0][lineNumber] = SquareType.WALL;
 		for (int lineNumber = 0; lineNumber < NUMBER_OF_LINES; lineNumber++)
 			this.grid[NUMBER_OF_LINES-1][lineNumber] = SquareType.WALL;
-
 	}
 	
 	/**
@@ -170,54 +115,6 @@ public class Map {
 	}
 	
 	/**
-	 * get the first box position
-	 * @return
-	 */
-	public Position getBoxPos(){
-		return this.box_pos;
-	}
-	
-	/**
-	 * set the first box position
-	 * @param pos
-	 */
-	public void setBoxPos(Position pos){
-		this.box_pos = pos;
-	}
-	
-	/**
-	 * get the second box position
-	 * @return
-	 */
-	public Position getBoxPos2(){
-		return this.box_pos2;
-	}
-	
-	/**
-	 * set the second box position
-	 * @param pos
-	 */
-	public void setBoxPos2(Position pos){
-		this.box_pos2 = pos;
-	}
-	
-	/**
-	 * get the first reach point position
-	 * @return
-	 */
-	public Position getRPpos(){
-		return this.reachPoint_pos;
-	}
-	
-	/**
-	 * get the second reach point position
-	 * @return
-	 */
-	public Position getRPpos2(){
-		return this.reachPoint_pos2;
-	}
-	
-	/**
 	 * get the element who was on the x,y square
 	 * @param x
 	 * @param y
@@ -227,7 +124,126 @@ public class Map {
 		return this.grid[x][y];
 	}
 	
-
+	/**
+	 * 
+	 * @param obj
+	 * @return
+	 */
+	public boolean searchEqualInBoxList(Position obj)
+	{
+		for(int index = 0; index < boxList.size(); index++)
+		{
+			if(this.boxList.get(index).equals(obj))
+				return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param obj
+	 * @return
+	 */
+	public Position getEqualInBoxList(Position obj)
+	{
+		for(int index = 0; index < boxList.size(); index++)
+		{
+			if(this.boxList.get(index).equals(obj))
+				return this.boxList.get(index);
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getSizeOfBoxList()
+	{
+		return this.boxList.size();
+	}
+	
+	/**
+	 * 
+	 * @param index
+	 * @return
+	 */
+	public Position getElementOfBoxList(int index)
+	{
+		return this.boxList.get(index);
+	}
+	
+	/**
+	 * 
+	 * @param actual
+	 * @param newPos
+	 */
+	public void changeBoxPosition(Position actual, Position newPos)
+	{
+		for(int index = 0; index < boxList.size(); index++)
+		{
+			if(this.boxList.get(index).equals(actual))
+				{
+					this.boxList.get(index).setX(newPos.getX());
+					this.boxList.get(index).setY(newPos.getY());
+				}
+				
+		}
+	}
+	
+	/**
+	 * 
+	 * @param obj
+	 * @return
+	 */
+	public boolean searchEqualInReachPointList(Position obj)
+	{
+		for(int index = 0; index < reachPointList.size(); index++)
+		{
+			if(this.reachPointList.get(index).equals(obj))
+				return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param obj
+	 * @return
+	 */
+	public Position getEqualInReachPointList(Position obj)
+	{
+		for(int index = 0; index < reachPointList.size(); index++)
+		{
+			if(this.reachPointList.get(index).equals(obj))
+				return this.reachPointList.get(index);
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getSizeOfReachPointList()
+	{
+		return this.reachPointList.size();
+	}
+	
+	/**
+	 * 
+	 * @param index
+	 * @return
+	 */
+	public Position getElementOfReachPointList(int index)
+	{
+		return this.reachPointList.get(index);
+	}
+	
 	/**
 	 * return the map in Ascii Art
 	 */
@@ -240,20 +256,16 @@ public class Map {
 			for (int columnNumber = 0; columnNumber < NUMBER_OF_COLUMNS; columnNumber++)
 			{
 				Position temp_pos = new Position(columnNumber,lineNumber);
-				for(int index = 0; index < boxList.size(); index++)
-				{
-					if (temp_pos.equals(boxList.get(index)))
-						newMap = newMap+"#";
-						
-				}
-				if (temp_pos.equals(char_pos))
-				{
-					newMap = newMap+"O";
-				}
-				else if (temp_pos.equals(reachPoint_pos) || temp_pos.equals(reachPoint_pos2))
-				{
+				
+				if(searchEqualInBoxList(temp_pos))
+					newMap = newMap+"#";
+				
+				else if(searchEqualInReachPointList(temp_pos))
 					newMap = newMap+"+";
-				}
+				
+				else if (temp_pos.equals(char_pos))
+					newMap = newMap+"O";
+				
 				else {
 				switch (this.grid[columnNumber][lineNumber])
 				{
@@ -261,15 +273,11 @@ public class Map {
 						newMap = newMap+"X";
 						break;
 					case VOID: 
-						newMap = newMap+" ";
-						
+						newMap = newMap+" ";	
 				}
 				}
 			}
 		}
-		
 		return newMap;
 	}
-
-	
 }
