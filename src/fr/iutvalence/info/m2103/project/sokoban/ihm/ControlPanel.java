@@ -9,7 +9,7 @@ public class ControlPanel extends JPanel
 {
 	public ControlPanel(ActionListener buttonAudit)
 	{
-		this.setLayout(new GridLayout(2,2));
+		this.setLayout(new GridLayout(1, 3));
 		JButton up = new JButton("UP");
 		up.addActionListener(buttonAudit);
 		JButton down = new JButton("DOWN");

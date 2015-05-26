@@ -18,29 +18,57 @@ import javax.swing.*;
  * @author hugo, virgil
  *
  */
-public class GUIDisplay implements Display, ActionListener{
+public class GUIDisplay implements Display, ActionListener, Player{
 
-	JFrame frame = new JFrame();
-	JPanel pan1 = new JPanel();
-	JPanel pan3 = new JPanel();
-	JSplitPane secondarySplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, new ControlPanel(this), pan3);
-	JSplitPane mainSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pan1, secondarySplitPane);
+	private JFrame frame;
+	private JPanel pan1;
+	private JPanel pan2;
+	private JPanel pan3;
+	private JSplitPane secondarySplitPane;
+	private JSplitPane mainSplitPane;
+	private JButton up;
+	private JButton down;
+	private JButton left;
+	private JButton right;
+	private JLabel textArea; 
+	private ControlPanel controlPan;
+	private Direction direction;
 	
-	JLabel textArea = new JLabel("Game in process");
 	
 	
-	/**
-	 * display the application in GUI
-	 */
-	//TODO Finsih to code the GUI
-	public void displayMap(String mapAscii){
+	public GUIDisplay (){
+		
+		this.frame = new JFrame();
+		this.pan1 = new JPanel();
+		this.pan2 = new JPanel();
+		this.pan3 = new JPanel();
+		this.controlPan = new ControlPanel(this);
+		this.secondarySplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pan2, pan3);
+		this.mainSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pan1, secondarySplitPane);
+		this.textArea = new JLabel("Game in process");
+		
+		
 		
 		this.textArea.setOpaque(true);
 		this.textArea.setBackground(Color.WHITE);
 		this.textArea.setHorizontalAlignment(SwingConstants.RIGHT);
 	
 	    this.pan1.setBackground(Color.GRAY);
-		this.pan1.setLayout(new GridLayout(11,11));
+		this.pan1.setLayout(new GridLayout(16,16));
+		
+		this.pan2.setLayout(new GridLayout(2, 2));
+		this.up = new JButton("UP");
+		this.up.addActionListener(this);
+		this.down = new JButton("DOWN");
+		this.down.addActionListener(this);
+		this.left = new JButton("LEFT");
+		this.left.addActionListener(this);
+		this.right = new JButton("RIGHT");
+		this.right.addActionListener(this);
+		this.pan2.add(up);
+		this.pan2.add(down);
+		this.pan2.add(left);
+		this.pan2.add(right);
 		
 		this.pan3.setBackground(Color.WHITE);
 		this.pan3.add(textArea);
@@ -62,13 +90,48 @@ public class GUIDisplay implements Display, ActionListener{
 		this.frame.getContentPane().add(this.mainSplitPane);
 		this.frame.setJMenuBar(new Menu(this.frame));
 		
+	}
+	/**
+	 * display the application in GUI
+	 */
+	//TODO Finsih to code the GUI
+	public void displayMap(String mapAscii){
+		
+		
+		
 
 	}
-
-			public void actionPerformed(ActionEvent e)
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		if (e.getSource() == this.up)
 		{
-
+			this.direction = Direction.UP;
 		}
+		
+		if (e.getSource() == this.down)
+		{
+			this.direction = Direction.DOWN;
+		}
+		
+		if (e.getSource() == this.left)
+		{
+			this.direction = Direction.LEFT;
+		}
+		
+		if (e.getSource() == this.right)
+		{
+			this.direction = Direction.RIGHT;
+		}
+	}
+	
+	@Override
+	public Direction getDirection() {
+		return this.direction;
+	}
+	
+		
+	
 	
 	
 }

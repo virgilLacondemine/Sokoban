@@ -30,7 +30,7 @@ public class ConsoleLuncher {
 		/**
 		 * map chosen to play
 		 */
-		Map map = new Map3();
+		Map map = new Map1();
 		
 		/**
 		 * create a sokoban game with the way to display and way to play

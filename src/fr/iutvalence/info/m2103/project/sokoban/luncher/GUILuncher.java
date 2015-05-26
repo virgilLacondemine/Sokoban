@@ -22,12 +22,8 @@ public class GUILuncher {
 		/**
 		 * way to play (keyboard, random, other)
 		 */
-		Player player = new KeyboardPlayer();
-		/**
-		 * way to display
-		 */
-		Display display = new GUIDisplay();
-		
+		GUIDisplay gui = new GUIDisplay();
+				
 		/**
 		 * map chosen to play
 		 */
@@ -36,7 +32,7 @@ public class GUILuncher {
 		/**
 		 * create a sokoban game with the way to display and way to play
 		 */
-		new SokobanGame(display, player, map).play();
+		new SokobanGame(gui, gui, map).play();
 		
 		
 		
