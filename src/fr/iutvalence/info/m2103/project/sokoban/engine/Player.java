@@ -1,4 +1,4 @@
-package fr.iutvalence.info.m2103.project.sokoban;
+package fr.iutvalence.info.m2103.project.sokoban.engine;
 /**
  * Class wich allows to get the direction chosen by a player.
  * @author hugo, virgil

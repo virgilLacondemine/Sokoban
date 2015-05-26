@@ -1,4 +1,4 @@
-package fr.iutvalence.info.m2103.project.sokoban;
+package fr.iutvalence.info.m2103.project.sokoban.engine;
 /**
  * Describe existing squares types to build the map
  * @author hugo, virgil

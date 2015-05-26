@@ -1,6 +1,7 @@
 package fr.iutvalence.info.m2103.project.sokoban.map;
 
-import fr.iutvalence.info.m2103.project.sokoban.*;
+import fr.iutvalence.info.m2103.project.sokoban.engine.*;
+
 import java.util.ArrayList;
 
 /**

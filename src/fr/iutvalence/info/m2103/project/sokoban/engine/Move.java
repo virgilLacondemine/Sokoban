@@ -1,4 +1,4 @@
-package fr.iutvalence.info.m2103.project.sokoban;
+package fr.iutvalence.info.m2103.project.sokoban.engine;
 
 /**
  * This class represents a move (square by square). A move is defined by a

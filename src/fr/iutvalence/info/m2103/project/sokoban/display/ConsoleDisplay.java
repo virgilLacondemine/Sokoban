@@ -1,6 +1,6 @@
 package fr.iutvalence.info.m2103.project.sokoban.display;
 
-import fr.iutvalence.info.m2103.project.sokoban.*;
+import fr.iutvalence.info.m2103.project.sokoban.engine.*;
 /**
  * Display the map in the console
  * @author hugo, virgil

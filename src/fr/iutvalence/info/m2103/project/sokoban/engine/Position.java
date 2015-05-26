@@ -1,4 +1,4 @@
-package fr.iutvalence.info.m2103.project.sokoban;
+package fr.iutvalence.info.m2103.project.sokoban.engine;
 /**
  * This is the position for some object on the map. Build with two coordinates x and y 
  * @author hugo, virgil
