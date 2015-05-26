@@ -1,4 +1,4 @@
-package fr.iutvalence.info.m2103.project.sokoban.luncher;
+package fr.iutvalence.info.m2103.project.sokoban.launcher;
 
 import fr.iutvalence.info.m2103.project.sokoban.map.*;
 import fr.iutvalence.info.m2103.project.sokoban.display.*;
@@ -12,7 +12,7 @@ import fr.iutvalence.info.m2103.project.sokoban.engine.*;
  * 
  *
  */
-public class ConsoleLuncher {
+public class ConsoleLauncher {
 	/**
 	 * Create a new Sokoban game and play it
 	 * @param args command-line arguments (unused)

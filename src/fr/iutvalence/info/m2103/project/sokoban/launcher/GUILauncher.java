@@ -1,4 +1,4 @@
-package fr.iutvalence.info.m2103.project.sokoban.luncher;
+package fr.iutvalence.info.m2103.project.sokoban.launcher;
 
 import fr.iutvalence.info.m2103.project.sokoban.map.*;
 import fr.iutvalence.info.m2103.project.sokoban.display.*;
@@ -13,7 +13,7 @@ import fr.iutvalence.info.m2103.project.sokoban.ihm.*;
  * 
  *
  */
-public class GUILuncher {
+public class GUILauncher {
 	/**
 	 * Create a new Sokoban game and play it
 	 * @param args command-line arguments (unused)
@@ -22,17 +22,19 @@ public class GUILuncher {
 		/**
 		 * way to play (keyboard, random, other)
 		 */
-		GUIDisplay gui = new GUIDisplay();
+		GUI gui = new GUI();
+		
+		Display display = new ConsoleDisplay();
 				
 		/**
 		 * map chosen to play
 		 */
-		Map map = new Map3();
+		Map map = new Map2();
 		
 		/**
 		 * create a sokoban game with the way to display and way to play
 		 */
-		new SokobanGame(gui, gui, map).play();
+		new SokobanGame(display, gui, map).play();
 		
 		
 		

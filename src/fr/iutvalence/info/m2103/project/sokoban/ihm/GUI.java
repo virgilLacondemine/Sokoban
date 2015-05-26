@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.*;
 
@@ -18,7 +20,7 @@ import javax.swing.*;
  * @author hugo, virgil
  *
  */
-public class GUIDisplay implements Display, ActionListener, Player{
+public class GUI implements Display, ActionListener, Player, KeyListener{
 
 	private JFrame frame;
 	private JPanel pan1;
@@ -30,25 +32,50 @@ public class GUIDisplay implements Display, ActionListener, Player{
 	private JButton down;
 	private JButton left;
 	private JButton right;
-	private JLabel textArea; 
-	private ControlPanel controlPan;
+	private JLabel textArea;
+	private JButton imageVoid;
+	private JButton imageWall;
+	private JButton imageBox;
+	private JButton imageReachPoint;
+	private JButton imageCharacter;
 	private Direction direction;
 	
+	private final static int NB_COLUMN = 16;
+	private final static int NB_LINE = 16;
 	
 	
-	public GUIDisplay (){
+	
+	public GUI (){
 		
 		this.frame = new JFrame();
 		this.pan1 = new JPanel();
 		this.pan2 = new JPanel();
 		this.pan3 = new JPanel();
-		this.controlPan = new ControlPanel(this);
 		this.secondarySplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pan2, pan3);
 		this.mainSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pan1, secondarySplitPane);
+		
+		this.imageVoid = new JButton();
+		this.imageVoid.setEnabled(false);
+		this.imageVoid.setBackground(Color.gray);
+		
+		this.imageWall = new JButton();
+		this.imageWall.setEnabled(false);
+		this.imageWall.setBackground(Color.black);
+		
+		this.imageBox = new JButton();
+		this.imageBox.setEnabled(false);
+		this.imageBox.setBackground(Color.red);
+		
+		this.imageReachPoint = new JButton();
+		this.imageReachPoint.setEnabled(false);
+		this.imageReachPoint.setBackground(Color.magenta);
+		
+		this.imageCharacter = new JButton();
+		this.imageCharacter.setEnabled(false);
+		this.imageCharacter.setBackground(Color.CYAN);
+		
+		
 		this.textArea = new JLabel("Game in process");
-		
-		
-		
 		this.textArea.setOpaque(true);
 		this.textArea.setBackground(Color.WHITE);
 		this.textArea.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -89,6 +116,7 @@ public class GUIDisplay implements Display, ActionListener, Player{
 		this.frame.setResizable(false);
 		this.frame.getContentPane().add(this.mainSplitPane);
 		this.frame.setJMenuBar(new Menu(this.frame));
+		this.frame.addKeyListener(this);
 		
 	}
 	/**
@@ -96,38 +124,114 @@ public class GUIDisplay implements Display, ActionListener, Player{
 	 */
 	//TODO Finsih to code the GUI
 	public void displayMap(String mapAscii){
-		
-		
-		
-
+			
 	}
 	
-	public void actionPerformed(ActionEvent e)
+	synchronized public void actionPerformed(ActionEvent e)
 	{
-		if (e.getSource() == this.up)
-		{
-			this.direction = Direction.UP;
-		}
+			
+		this.frame.requestFocus();
 		
-		if (e.getSource() == this.down)
-		{
-			this.direction = Direction.DOWN;
-		}
-		
-		if (e.getSource() == this.left)
-		{
-			this.direction = Direction.LEFT;
-		}
-		
-		if (e.getSource() == this.right)
-		{
-			this.direction = Direction.RIGHT;
-		}
+			if (e.getSource() == this.up)
+			{
+				this.direction = Direction.UP;
+				this.notify();
+			}
+			
+			if (e.getSource() == this.down)
+			{
+				this.direction = Direction.DOWN;
+				this.notify();
+			}
+			
+			if (e.getSource() == this.left)
+			{
+				this.direction = Direction.LEFT;
+				this.notify();
+			}
+			
+			if (e.getSource() == this.right)
+			{
+				this.direction = Direction.RIGHT;
+				this.notify();
+			}
+			
 	}
 	
 	@Override
-	public Direction getDirection() {
-		return this.direction;
+	synchronized public Direction getDirection(){
+			try
+			{
+				this.wait();
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+			return this.direction;
+	}
+	
+	@Override
+	synchronized public void keyPressed(KeyEvent e)
+	{
+		if(e.getKeyChar() == 'z')
+		{
+			this.direction = Direction.UP;
+			this.notify();
+		}
+		
+		if(e.getKeyChar() == 's')
+		{
+			this.direction = Direction.DOWN;
+			this.notify();
+		}
+		
+		if(e.getKeyChar() == 'q')
+		{
+			this.direction = Direction.LEFT;
+			this.notify();
+		}
+		
+		if(e.getKeyChar() == 'd')
+		{
+			this.direction = Direction.RIGHT;
+			this.notify();
+		}
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent arg0)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	synchronized public void keyTyped(KeyEvent e)
+	{
+		if(e.getKeyChar() == 'z')
+		{
+			this.direction = Direction.UP;
+			this.notify();
+		}
+		
+		if(e.getKeyChar() == 's')
+		{
+			this.direction = Direction.DOWN;
+			this.notify();
+		}
+		
+		if(e.getKeyChar() == 'q')
+		{
+			this.direction = Direction.LEFT;
+			this.notify();
+		}
+		
+		if(e.getKeyChar() == 'd')
+		{
+			this.direction = Direction.RIGHT;
+			this.notify();
+		}
+			
 	}
 	
 		
