@@ -246,6 +246,16 @@ public class Map1 implements Map{
 		return this.reachPointList.get(index);
 	}
 	
+	public int getNumberOfColumn()
+	{
+		return this.NUMBER_OF_COLUMNS;
+	}
+	
+	public int getNumberOfLine()
+	{
+		return this.NUMBER_OF_LINES;
+	}
+	
 	/**
 	 * return the map in Ascii Art
 	 */

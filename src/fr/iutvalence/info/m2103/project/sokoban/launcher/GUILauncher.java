@@ -19,18 +19,19 @@ public class GUILauncher {
 	 * @param args command-line arguments (unused)
 	 */
 	public static void main(String[] args) {
-		/**
-		 * way to play (keyboard, random, other)
-		 */
-		GUI gui = new GUI();
 		
-		Display display = new ConsoleDisplay();
-				
 		/**
 		 * map chosen to play
 		 */
 		Map map = new Map2();
 		
+		/**
+		 * way to play (keyboard, random, other)
+		 */
+		GUI gui = new GUI(map.getNumberOfColumn(), map.getNumberOfLine());
+		
+		Display display = new ConsoleDisplay();
+						
 		/**
 		 * create a sokoban game with the way to display and way to play
 		 */

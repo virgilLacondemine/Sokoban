@@ -27,5 +27,9 @@ public interface Map
 	
 	public Position getElementOfReachPointList(int index);
 	
+	public int getNumberOfColumn();
+	
+	public int getNumberOfLine();
+	
 	public String toString();
 }

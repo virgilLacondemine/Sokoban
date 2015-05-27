@@ -39,13 +39,15 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	private JButton imageReachPoint;
 	private JButton imageCharacter;
 	private Direction direction;
-	
-	private final static int NB_COLUMN = 16;
-	private final static int NB_LINE = 16;
-	
+	private int columnNumber;
+	private int lineNumber;
 	
 	
-	public GUI (){
+	
+	public GUI (int columnNumber, int lineNumber){
+		
+		this.columnNumber = columnNumber;
+		this.lineNumber = lineNumber;
 		
 		this.frame = new JFrame();
 		this.pan1 = new JPanel();
@@ -81,7 +83,7 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 		this.textArea.setHorizontalAlignment(SwingConstants.RIGHT);
 	
 	    this.pan1.setBackground(Color.GRAY);
-		this.pan1.setLayout(new GridLayout(16,16));
+		this.pan1.setLayout(new GridLayout(this.columnNumber,this.lineNumber));
 		
 		this.pan2.setLayout(new GridLayout(2, 2));
 		this.up = new JButton("UP");
@@ -124,7 +126,6 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	 */
 	//TODO Finsih to code the GUI
 	public void displayMap(Map map){
-	
 		
 		
 	}
