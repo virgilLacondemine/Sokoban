@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
  */
 public interface Display {
 
-	public void displayMap(String mapAscii);
+	public void displayMap(Map map);
 
 
 	

@@ -123,8 +123,10 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	 * display the application in GUI
 	 */
 	//TODO Finsih to code the GUI
-	public void displayMap(String mapAscii){
-			
+	public void displayMap(Map map){
+	
+		
+		
 	}
 	
 	synchronized public void actionPerformed(ActionEvent e)

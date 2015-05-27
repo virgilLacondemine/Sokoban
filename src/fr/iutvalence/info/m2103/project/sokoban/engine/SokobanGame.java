@@ -42,7 +42,7 @@ public class SokobanGame {
 		while (true)
 		{
 			// display map
-			display.displayMap(this.map.toString());
+			display.displayMap(this.map);
 			// test if game is won or lost
 			if (this.gameIsWon()) return true;
 			if(this.gameIsLost()) return false;
