@@ -30,8 +30,6 @@ public class GUILauncher {
 		 */
 		GUI gui = new GUI(map.getNumberOfColumn(), map.getNumberOfLine());
 		
-		Display display = new ConsoleDisplay();
-						
 		/**
 		 * create a sokoban game with the way to display and way to play
 		 */

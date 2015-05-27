@@ -6,7 +6,9 @@ import fr.iutvalence.info.m2103.project.sokoban.player.*;
 import fr.iutvalence.info.m2103.project.sokoban.map.*;
 
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -65,15 +67,16 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	    this.pan1.setBackground(Color.GRAY);
 		this.pan1.setLayout(new GridLayout(this.columnNumber,this.lineNumber));
 		
-		this.labelGrid = new JLabel[this.columnNumber][this.lineNumber];
+		this.labelGrid = new JLabel[this.lineNumber][this.columnNumber];
 		
 		for(int column = 0; column < this.columnNumber; column++)
 		{
 			for(int line = 0; line < this.lineNumber; line++)
 			{
-				this.labelGrid[column][line] = new JLabel();
-				this.pan1.add(this.labelGrid[column][line]);
+				this.labelGrid[line][column] = new JLabel();
+				this.pan1.add(this.labelGrid[line][column]);
 			}
+	
 		}
 		
 		this.pan2.setLayout(new GridLayout(2, 2));
@@ -120,25 +123,24 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	 */
 	//TODO Finsih to code the GUI
 	public void displayMap(Map map){
-
-		for (int column = 0; column < this.columnNumber; column++)
+		for (int line = 0; line < this.lineNumber; line++)
 		{
-			for (int line = 0; line < this.lineNumber; line++)
+			for (int column = 0; column < this.columnNumber; column++)
 			{
 				Position tempPos = new Position(column,line);
 				if(map.searchEqualInBoxList(tempPos))
 				{
-					this.labelGrid[column][line].setIcon(new ImageIcon("img/box.png"));
+					this.labelGrid[line][column].setIcon((Icon) new ImageIcon("img/box.png"));
 				}
 				
 				else if(tempPos.equals(map.getCharPos()))
 				{
-					this.labelGrid[column][line].setIcon(new ImageIcon("img/char.png"));
+					this.labelGrid[line][column].setIcon(new ImageIcon("img/char.png"));
 				}
 				
 				else if(map.searchEqualInReachPointList(tempPos))
 				{
-					this.labelGrid[column][line].setIcon(new ImageIcon("img/RP.png"));
+					this.labelGrid[line][column].setIcon(new ImageIcon("img/RP.png"));
 				}
 				
 				else
@@ -146,13 +148,14 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 					switch (map.getElementOfGrid(column, line))
 					{
 						case WALL:
-							this.labelGrid[column][line].setIcon(new ImageIcon("img/wall.png"));
+							this.labelGrid[line][column].setIcon(new ImageIcon("img/wall.png"));
 							break;
 						case VOID:
-							this.labelGrid[column][line].setIcon(new ImageIcon("img/voide.png"));
+							this.labelGrid[line][column].setIcon(new ImageIcon("img/voide.png"));
 							break;
 					}
 				}
+				
 			}
 			this.frame.repaint();
 		}
@@ -205,10 +208,8 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	@Override
 	synchronized public void keyPressed(KeyEvent e)
 	{
-		System.out.println("keypressed");
 		if(e.getKeyChar() == 'z')
 		{
-			System.out.println("z");
 			this.direction = Direction.UP;
 			this.notify();
 		}
@@ -241,32 +242,20 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	@Override
 	synchronized public void keyTyped(KeyEvent e)
 	{
-		if(e.getKeyChar() == 'z')
-		{
-			this.direction = Direction.UP;
-			this.notify();
-		}
-		
-		if(e.getKeyChar() == 's')
-		{
-			this.direction = Direction.DOWN;
-			this.notify();
-		}
-		
-		if(e.getKeyChar() == 'q')
-		{
-			this.direction = Direction.LEFT;
-			this.notify();
-		}
-		
-		if(e.getKeyChar() == 'd')
-		{
-			this.direction = Direction.RIGHT;
-			this.notify();
-		}
-			
+	
 	}
 	
+	public void gameIsWin()
+	{
+		JOptionPane.showMessageDialog(this.frame, "You win !");
+		this.textArea.setText("Congratulation you win the game !");
+	}
+	
+	public void gameIsLose()
+	{
+		JOptionPane.showMessageDialog(this.frame, "You Lose ...");
+		this.textArea.setText("Sorry but you lose the game ...");
+	}
 		
 	
 	

@@ -271,7 +271,7 @@ public class SokobanGame {
 		}
 		if(nbBlocked >= this.map.getSizeOfBoxList())
 		{
-			System.out.println("You Lose !");
+			display.gameIsLose();
 			return true;
 		}
 		return false;
@@ -293,7 +293,7 @@ public class SokobanGame {
 		}
 		if(nbGood == this.map.getSizeOfBoxList())
 		{
-			System.out.println("You Win !");
+			display.gameIsWin();
 			return true;
 		}
 		return false;

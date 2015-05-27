@@ -11,6 +11,10 @@ public interface Display {
 
 	public void displayMap(Map map);
 
+	public void gameIsWin();
+
+	public void gameIsLose();
+
 
 	
 }

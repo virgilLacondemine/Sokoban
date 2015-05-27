@@ -17,6 +17,15 @@ public class ConsoleDisplay implements Display{
 		newMap = map.toString();
 		System.out.println(newMap);
 	}
-
+	
+	public void gameIsWin()
+	{
+		System.out.println("You win !");
+	}
+	
+	public void gameIsLose()
+	{
+		System.out.println("You Lose ...");
+	}
 	
 }
