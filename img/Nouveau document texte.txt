@@ -1,0 +1,27 @@
+	public void displayMap(Map map){
+		String newMap;
+		newMap = map.toString();
+		for (int whatIsIt = 0; whatIsIt < map.toString().length(); whatIsIt++){
+			JLabel label = new JLabel();
+			switch (newMap.charAt(whatIsIt))
+			{
+				case 'X':
+					label.setIcon(new ImageIcon("img/wall.png"));
+				case ' ':
+					label.setIcon(new ImageIcon("img/voide.png"));
+				case '+':
+					label.setIcon(new ImageIcon("img/RP.png"));
+				case '#':
+					label.setIcon(new ImageIcon("img/box.png"));
+				case 'O':
+					label.setIcon(new ImageIcon("img/char.png"));
+				case '\n':
+					
+				default:
+					
+			}
+			this.pan1.add(label);
+		}
+		
+		
+	}

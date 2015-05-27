@@ -33,6 +33,8 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	private JButton left;
 	private JButton right;
 	private JLabel textArea;
+	private JLabel label;
+	private JLabel[][] labelGrid;
 	private JButton imageVoid;
 	private JButton imageWall;
 	private JButton imageBox;
@@ -44,6 +46,7 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	
 	
 	
+	
 	public GUI (int columnNumber, int lineNumber){
 		
 		this.columnNumber = columnNumber;
@@ -52,30 +55,7 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 		this.frame = new JFrame();
 		this.pan1 = new JPanel();
 		this.pan2 = new JPanel();
-		this.pan3 = new JPanel();
-		this.secondarySplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pan2, pan3);
-		this.mainSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pan1, secondarySplitPane);
-		
-		this.imageVoid = new JButton();
-		this.imageVoid.setEnabled(false);
-		this.imageVoid.setBackground(Color.gray);
-		
-		this.imageWall = new JButton();
-		this.imageWall.setEnabled(false);
-		this.imageWall.setBackground(Color.black);
-		
-		this.imageBox = new JButton();
-		this.imageBox.setEnabled(false);
-		this.imageBox.setBackground(Color.red);
-		
-		this.imageReachPoint = new JButton();
-		this.imageReachPoint.setEnabled(false);
-		this.imageReachPoint.setBackground(Color.magenta);
-		
-		this.imageCharacter = new JButton();
-		this.imageCharacter.setEnabled(false);
-		this.imageCharacter.setBackground(Color.CYAN);
-		
+		this.pan3 = new JPanel();		
 		
 		this.textArea = new JLabel("Game in process");
 		this.textArea.setOpaque(true);
@@ -84,6 +64,13 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	
 	    this.pan1.setBackground(Color.GRAY);
 		this.pan1.setLayout(new GridLayout(this.columnNumber,this.lineNumber));
+		
+		for(int index = 0; index <= this.columnNumber*this.lineNumber; index++)
+		{
+			this.label = new JLabel();
+			this.pan1.add(label);
+		}
+		
 		
 		this.pan2.setLayout(new GridLayout(2, 2));
 		this.up = new JButton("UP");
@@ -101,6 +88,9 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 		
 		this.pan3.setBackground(Color.WHITE);
 		this.pan3.add(textArea);
+		
+		this.secondarySplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pan2, pan3);
+		this.mainSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pan1, secondarySplitPane);
 		
 		this.secondarySplitPane.setDividerLocation(200);
 		this.secondarySplitPane.setDividerSize(0);
@@ -126,6 +116,31 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	 */
 	//TODO Finsih to code the GUI
 	public void displayMap(Map map){
+		String newMap;
+		newMap = map.toString();
+		for (int whatIsIt = 0; whatIsIt < map.toString().length(); whatIsIt++){
+			
+			switch (newMap.charAt(whatIsIt))
+			{
+				case 'X':
+					label.setIcon(new ImageIcon("img/wall.png"));
+				case ' ':
+					label.setIcon(new ImageIcon("img/voide.png"));
+				case '+':
+					label.setIcon(new ImageIcon("img/RP.png"));
+				case '#':
+					label.setIcon(new ImageIcon("img/box.png"));
+				case 'O':
+					label.setIcon(new ImageIcon("img/char.png"));
+				case '\n':
+					
+				default:
+					
+			}
+			
+			this.frame.repaint();
+			
+		}
 		
 		
 	}
@@ -177,8 +192,10 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	@Override
 	synchronized public void keyPressed(KeyEvent e)
 	{
+		System.out.println("keypressed");
 		if(e.getKeyChar() == 'z')
 		{
+			System.out.println("z");
 			this.direction = Direction.UP;
 			this.notify();
 		}

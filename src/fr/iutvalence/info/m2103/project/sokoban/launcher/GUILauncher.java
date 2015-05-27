@@ -35,7 +35,7 @@ public class GUILauncher {
 		/**
 		 * create a sokoban game with the way to display and way to play
 		 */
-		new SokobanGame(display, gui, map).play();
+		new SokobanGame(gui, gui, map).play();
 		
 		
 		
