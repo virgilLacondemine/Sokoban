@@ -65,13 +65,13 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 		this.textArea.setHorizontalAlignment(SwingConstants.RIGHT);
 	
 	    this.pan1.setBackground(Color.GRAY);
-		this.pan1.setLayout(new GridLayout(this.columnNumber,this.lineNumber));
+		this.pan1.setLayout(new GridLayout(this.lineNumber,this.columnNumber));
 		
 		this.labelGrid = new JLabel[this.lineNumber][this.columnNumber];
 		
-		for(int column = 0; column < this.columnNumber; column++)
+		for(int line = 0; line < this.lineNumber; line++)
 		{
-			for(int line = 0; line < this.lineNumber; line++)
+			for(int column = 0; column < this.columnNumber; column++)
 			{
 				this.labelGrid[line][column] = new JLabel();
 				this.pan1.add(this.labelGrid[line][column]);
