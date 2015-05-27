@@ -65,12 +65,16 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	    this.pan1.setBackground(Color.GRAY);
 		this.pan1.setLayout(new GridLayout(this.columnNumber,this.lineNumber));
 		
-		for(int index = 0; index <= this.columnNumber*this.lineNumber; index++)
-		{
-			this.label = new JLabel();
-			this.pan1.add(label);
-		}
+		this.labelGrid = new JLabel[this.columnNumber][this.lineNumber];
 		
+		for(int column = 0; column < this.columnNumber; column++)
+		{
+			for(int line = 0; line < this.lineNumber; line++)
+			{
+				this.labelGrid[column][line] = new JLabel();
+				this.pan1.add(this.labelGrid[column][line]);
+			}
+		}
 		
 		this.pan2.setLayout(new GridLayout(2, 2));
 		this.up = new JButton("UP");
@@ -116,33 +120,42 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 	 */
 	//TODO Finsih to code the GUI
 	public void displayMap(Map map){
-		String newMap;
-		newMap = map.toString();
-		for (int whatIsIt = 0; whatIsIt < map.toString().length(); whatIsIt++){
-			
-			switch (newMap.charAt(whatIsIt))
+
+		for (int column = 0; column < this.columnNumber; column++)
+		{
+			for (int line = 0; line < this.lineNumber; line++)
 			{
-				case 'X':
-					label.setIcon(new ImageIcon("img/wall.png"));
-				case ' ':
-					label.setIcon(new ImageIcon("img/voide.png"));
-				case '+':
-					label.setIcon(new ImageIcon("img/RP.png"));
-				case '#':
-					label.setIcon(new ImageIcon("img/box.png"));
-				case 'O':
-					label.setIcon(new ImageIcon("img/char.png"));
-				case '\n':
-					
-				default:
-					
+				Position tempPos = new Position(column,line);
+				if(map.searchEqualInBoxList(tempPos))
+				{
+					this.labelGrid[column][line].setIcon(new ImageIcon("img/box.png"));
+				}
+				
+				else if(tempPos.equals(map.getCharPos()))
+				{
+					this.labelGrid[column][line].setIcon(new ImageIcon("img/char.png"));
+				}
+				
+				else if(map.searchEqualInReachPointList(tempPos))
+				{
+					this.labelGrid[column][line].setIcon(new ImageIcon("img/RP.png"));
+				}
+				
+				else
+				{
+					switch (map.getElementOfGrid(column, line))
+					{
+						case WALL:
+							this.labelGrid[column][line].setIcon(new ImageIcon("img/wall.png"));
+							break;
+						case VOID:
+							this.labelGrid[column][line].setIcon(new ImageIcon("img/voide.png"));
+							break;
+					}
+				}
 			}
-			
 			this.frame.repaint();
-			
 		}
-		
-		
 	}
 	
 	synchronized public void actionPerformed(ActionEvent e)
