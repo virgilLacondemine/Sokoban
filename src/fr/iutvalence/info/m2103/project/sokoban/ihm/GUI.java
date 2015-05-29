@@ -64,8 +64,9 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 		this.textArea.setBackground(Color.WHITE);
 		this.textArea.setHorizontalAlignment(SwingConstants.RIGHT);
 	
-	    this.pan1.setBackground(Color.GRAY);
+	    this.pan1.setBackground(new Color(90,187,141));
 		this.pan1.setLayout(new GridLayout(this.lineNumber,this.columnNumber));
+		
 		
 		this.labelGrid = new JLabel[this.lineNumber][this.columnNumber];
 		
@@ -103,13 +104,13 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 		this.secondarySplitPane.setDividerSize(0);
 		this.secondarySplitPane.setBorder(null);
 		
-		this.mainSplitPane.setDividerLocation(500);
+		this.mainSplitPane.setDividerLocation(380);
 		this.mainSplitPane.setDividerSize(0);
 		this.mainSplitPane.setBorder(null);
 		
 		this.frame.setVisible(true);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.frame.setSize(600, 800);
+		this.frame.setSize(550, 680);
 		this.frame.setLocationRelativeTo(null);
 		this.frame.setTitle("Sokoban");
 		this.frame.setResizable(false);
