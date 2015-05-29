@@ -104,13 +104,13 @@ public class GUI implements Display, ActionListener, Player, KeyListener{
 		this.secondarySplitPane.setDividerSize(0);
 		this.secondarySplitPane.setBorder(null);
 		
-		this.mainSplitPane.setDividerLocation(380);
+		this.mainSplitPane.setDividerLocation(this.lineNumber*32);
 		this.mainSplitPane.setDividerSize(0);
 		this.mainSplitPane.setBorder(null);
 		
 		this.frame.setVisible(true);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.frame.setSize(550, 680);
+		this.frame.setSize(this.columnNumber*32, (this.lineNumber*32)+250);
 		this.frame.setLocationRelativeTo(null);
 		this.frame.setTitle("Sokoban");
 		this.frame.setResizable(false);

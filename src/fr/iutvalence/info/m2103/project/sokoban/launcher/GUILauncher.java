@@ -23,7 +23,7 @@ public class GUILauncher {
 		/**
 		 * map chosen to play
 		 */
-		Map map = new Map2();
+		Map map = new Map4();
 		
 		/**
 		 * way to play (keyboard, random, other)
